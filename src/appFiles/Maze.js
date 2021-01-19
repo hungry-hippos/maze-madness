@@ -1,5 +1,6 @@
 import React, { useEffect,useState } from 'react'
-import mazeLogic from './mazeLogic'
+import mazeGeneration from './mazeGeneration'
+import chickenMovement from './chickenMovement'
 import './Maze.css'
 
 
@@ -9,12 +10,14 @@ import './Maze.css'
 const Maze=()=>{
 
     useEffect(()=>{
-        mazeLogic.populateMaze();
-        mazeLogic.pickStartingSq();
-        mazeLogic.loadMovementListener();
+        mazeGeneration.createMaze();
+        chickenMovement.spawnChicken();
+        chickenMovement.loadMovementListener();
     },[])
-    return <div id='maze'>
-    </div>
+    return <React.Fragment>
+        <div id='maze'>
+        </div>
+    </React.Fragment>
 }
 
 export default Maze
