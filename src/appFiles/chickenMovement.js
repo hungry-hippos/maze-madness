@@ -6,20 +6,34 @@ const chickenMovement={
 
     getNextKey(direction){
         const gridSize=chickenMovement.allSq.length;
-        const currKey=parseInt(chickenMovement.chickenKey,10);
-        if (gridSize===64){            
-            switch (direction){
-                case 'up':
-                    return (chickenMovement.allSq[currKey].classList.contains('top'))?-1:currKey-8;
-                case 'down':
-                    return (chickenMovement.allSq[currKey].classList.contains('bottom'))?-1:currKey+8;
-                case 'left':
-                    return (chickenMovement.allSq[currKey].classList.contains('left'))?-1:currKey-1;
-                case 'right':
-                    return (chickenMovement.allSq[currKey].classList.contains('right'))?-1:currKey+1;
-                default:
-                    break;
-            }
+        var rowSize=0;
+        switch(gridSize){
+            case 64:
+                rowSize=8;
+                break;
+            case 300:
+                rowSize=20;
+                break;
+            case 1344:
+                rowSize=56;
+                break;
+            default:
+                break;
+        }
+
+
+        const currKey=parseInt(chickenMovement.chickenKey,10);     
+        switch (direction){
+            case 'up':
+                return (chickenMovement.allSq[currKey].classList.contains('top'))?-1:currKey-rowSize;
+            case 'down':
+                return (chickenMovement.allSq[currKey].classList.contains('bottom'))?-1:currKey+rowSize;
+            case 'left':
+                return (chickenMovement.allSq[currKey].classList.contains('left'))?-1:currKey-1;
+            case 'right':
+                return (chickenMovement.allSq[currKey].classList.contains('right'))?-1:currKey+1;
+            default:
+                break;
         }
     },
     moveChicken(direction){
@@ -30,9 +44,23 @@ const chickenMovement={
             chickenMovement.chickenKey=nextKey;
         }
     },
-    spawnChicken(){
-        chickenMovement.allSq=document.getElementsByClassName('square');
-        chickenMovement.chickenKey=document.getElementsByClassName('entrance')[0].getAttribute('key');
+    spawnChicken(difficulty){
+        var sqId="";
+        switch(difficulty){
+            case "easy":
+                sqId='easySquare';
+                break;
+            case "medium":
+                sqId='mediumSquare';
+                break;
+            case "hard":
+                sqId='hardSquare';
+                break;
+            default:
+                break;
+        }
+        chickenMovement.allSq=document.getElementsByClassName(sqId);
+        chickenMovement.chickenKey=parseInt(document.getElementsByClassName('entrance')[0].getAttribute('key'),10);
         chickenMovement.allSq[chickenMovement.chickenKey].classList.add('chicken');
     },
     loadMovementListener(){

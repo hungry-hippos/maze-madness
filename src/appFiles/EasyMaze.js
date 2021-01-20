@@ -4,20 +4,20 @@ import chickenMovement from './chickenMovement'
 import './Maze.css'
 
 
-const Maze=()=>{
+const EasyMaze=()=>{
 
     useEffect(()=>{
-        mazeGeneration.createMaze();
+        mazeGeneration.createMaze("easy");
         setTimeout(() => {
-            chickenMovement.spawnChicken();
+            chickenMovement.spawnChicken("easy");
             chickenMovement.loadMovementListener();
         }, 2000);
         
     },[])
     return <React.Fragment>
-        <div id='maze'>
+        <div id='easyMaze'>
         </div>
     </React.Fragment>
 }
 
-export default Maze
+export default EasyMaze

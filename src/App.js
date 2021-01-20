@@ -1,9 +1,11 @@
 import logo from './logo.svg';
-import Maze from './appFiles/Maze'
+import EasyMaze from './appFiles/EasyMaze'
 import './App.css';
+import MediumMaze from './appFiles/MediumMaze'
+import HardMaze from './appFiles/HardMaze'
 
 function App() {
-  return <Maze/>
+  return <HardMaze/>
 }
 
 export default App;
