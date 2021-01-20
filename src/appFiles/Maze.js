@@ -4,15 +4,15 @@ import chickenMovement from './chickenMovement'
 import './Maze.css'
 
 
-
-
-
 const Maze=()=>{
 
     useEffect(()=>{
         mazeGeneration.createMaze();
-        chickenMovement.spawnChicken();
-        chickenMovement.loadMovementListener();
+        setTimeout(() => {
+            chickenMovement.spawnChicken();
+            chickenMovement.loadMovementListener();
+        }, 2000);
+        
     },[])
     return <React.Fragment>
         <div id='maze'>
