@@ -1,21 +1,21 @@
 #easyMaze{height:400px;
 width:400px;
 box-sizing: border-box;
-background-color: red;
+background-color: black;
 display:block;
 margin:50px auto;
 }
 #mediumMaze{height:600px;
 width:800px;
 box-sizing: border-box;
-background-color:red;
+background-color:black;
 display: block;
 margin:50px auto;
 }
 #hardMaze{height:600px;
 width:1400px;
 box-sizing: border-box;
-background-color:red;
+background-color:black;
 display: block;
 margin:50px auto;
 }
@@ -40,14 +40,16 @@ box-sizing: border-box;
     float:left;
     box-sizing: border-box;
 }
-.top{border-top:thin solid black}
-.bottom{border-bottom: thin solid black;}
-.right{border-right:thin solid black}
-.left{border-left:thin solid black}
+.top{border-top:4px solid black}
+.bottom{border-bottom: 4px solid black;}
+.right{border-right:4px solid black}
+.left{border-left:4px solid black}
 
-.current{background-color: green;}
+.current{background-color: green !important;}
+.visited{background-color: white;}
+.explored{background-color: red;}
 .entrance{border-top: 3px solid black}
-.exit{border-bottom: 5px solid black}
+.exit{border-bottom: 10px solid orange}
 
 .chicken{background-image: url(../images/dumbChickenClear.png);
 background-size: 100% 100%;

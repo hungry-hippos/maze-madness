@@ -170,17 +170,33 @@ const mazeGeneration={
         }
     },
     //generates the maze walls using a timeInterval
-    stackRandomMazeGenerator(){
+    stackRandomMazeGenerator(difficulty){
 
+        var timeInterval=0;
+        switch(difficulty){
+            case "easy":
+                timeInterval=40;
+                break;
+            case "medium":
+                timeInterval=15;
+                break;
+            case "hard":
+                timeInterval=1;
+                break;
+            default:
+                break;
+        }
         var nbrPositions=["up","down","left","right"];
 
         mazeGeneration.intervalCode=setInterval(()=>{
             if (mazeGeneration.visitedCounter===mazeGeneration.isVisited.length){
                 clearInterval(mazeGeneration.intervalCode);
+                document.getElementsByClassName('current')[0].classList.add('visited');
                 document.getElementsByClassName('current')[0].classList.remove('current');
                 return;
             }
 
+            document.getElementsByClassName('current')[0].classList.add('visited');
             document.getElementsByClassName('current')[0].classList.remove('current');
             const currPos=mazeGeneration.posStack[mazeGeneration.posStack.length-1];
             mazeGeneration.allSq[currPos].classList.add('current');
@@ -203,7 +219,7 @@ const mazeGeneration={
                 }
             }
             mazeGeneration.posStack.pop();
-        },10)
+        },timeInterval)
     },
     //this function isn't really used but I keep it cause its cool
     recursiveRandomMazeGenerator(currKey){
@@ -231,7 +247,7 @@ const mazeGeneration={
         mazeGeneration.populateMaze(difficulty);
         mazeGeneration.pickStartingSq(difficulty);
         mazeGeneration.pickExitSq(difficulty);
-        mazeGeneration.stackRandomMazeGenerator();
+        mazeGeneration.stackRandomMazeGenerator(difficulty);
     }
 }
 

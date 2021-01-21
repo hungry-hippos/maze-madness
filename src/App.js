@@ -5,7 +5,7 @@ import MediumMaze from './appFiles/MediumMaze'
 import HardMaze from './appFiles/HardMaze'
 
 function App() {
-  return <HardMaze/>
+  return <MediumMaze/>
 }
 
 export default App;
