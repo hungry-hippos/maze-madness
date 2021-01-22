@@ -4,8 +4,10 @@ import './App.css';
 import MediumMaze from './appFiles/MediumMaze'
 import HardMaze from './appFiles/HardMaze'
 
+import HardPrims from './appFiles/HardPrims'
+
 function App() {
-  return <MediumMaze/>
+  return <HardPrims/>
 }
 
 export default App;

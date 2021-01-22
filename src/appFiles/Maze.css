@@ -48,7 +48,7 @@ box-sizing: border-box;
 .current{background-color: green !important;}
 .visited{background-color: white;}
 .explored{background-color: red;}
-.entrance{border-top: 3px solid black}
+.entrance{border-top: 10px solid green}
 .exit{border-bottom: 10px solid orange}
 
 .chicken{background-image: url(../images/dumbChickenClear.png);

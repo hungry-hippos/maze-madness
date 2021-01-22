@@ -109,7 +109,7 @@ const mazeSolver={
 
 
         //actual dfs logic starts here
-        const nbrPositions=["up","down","left","right"];
+        const nbrPositions=["up","left","right","down"];
 
         mazeSolver.intervalCode=setInterval(()=>{
 
@@ -152,7 +152,7 @@ const mazeSolver={
                 sqId="mediumSquare";
                 break;
             case "hard":
-                timeInterval=1;
+                timeInterval=100;
                 sqId="hardSquare";
                 break;
             default:
