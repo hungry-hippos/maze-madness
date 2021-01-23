@@ -58,18 +58,14 @@ const primsGeneration={
         primsGeneration.allSq[num].classList.add('current');
 
         //correct this gimmickey ass code asap
-        if (num!==0){
-            primsGeneration.frontierSet.push(num-1);
-            primsGeneration.allSq[num-1].classList.add('frontier');
+        const nbrDirections=['up','down','left','right']
+        for (var i=0;i<4;i++){
+            const nbrKey=primsGeneration.getNbrKey(num,nbrDirections[i]);
+            if (nbrKey!==-1){
+                primsGeneration.allSq[nbrKey].classList.add('frontier');
+                primsGeneration.frontierSet.push(nbrKey);
+            }
         }
-        if (num!==55){
-            primsGeneration.frontierSet.push(num+1);
-            primsGeneration.allSq[num+1].classList.add('frontier');
-
-        }
-        primsGeneration.frontierSet.push(num+56);
-        primsGeneration.allSq[num+56].classList.add('frontier');
-
     },
     pickExitSq(difficulty){
 
@@ -132,6 +128,8 @@ const primsGeneration={
             primsGeneration.allSq[frontierKey].classList.remove('bottom');
             primsGeneration.allSq[visitedKey].classList.remove('top');
         }
+        primsGeneration.allSq[frontierKey].classList.remove('frontier');
+        primsGeneration.allSq[visitedKey].classList.remove('visitedKey');
     },
     shuffleLastFrontierElement(){
         console.log(primsGeneration.frontierSet);
@@ -195,6 +193,12 @@ const primsGeneration={
                 }
             }
         },timeInterval)
+    },
+    createMaze(difficulty){
+        primsGeneration.populateMaze(difficulty);
+        primsGeneration.pickStartingSq(difficulty);
+        primsGeneration.pickExitSq(difficulty);
+        primsGeneration.stackRandomMazeGenerator(difficulty);
     }
 }
 

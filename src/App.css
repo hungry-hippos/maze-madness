@@ -1,0 +1,10 @@
+#sideMenu{position:absolute;
+left:0;
+top:50px;
+width:100px;
+}
+
+.sideMenuBtn{font-size: 20px;
+background-color: bisque;
+margin:5px 0;
+}

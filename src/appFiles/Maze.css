@@ -39,6 +39,7 @@ box-sizing: border-box;
     display:block;
     float:left;
     box-sizing: border-box;
+    box-shadow: none;
 }
 .top{border-top:4px solid black}
 .bottom{border-bottom: 4px solid black;}
@@ -48,6 +49,7 @@ box-sizing: border-box;
 .current{background-color: green !important;}
 .visited{background-color: white;}
 .explored{background-color: red;}
+.frontier{background-color: aqua;}
 .entrance{border-top: 10px solid green}
 .exit{border-bottom: 10px solid orange}
 
