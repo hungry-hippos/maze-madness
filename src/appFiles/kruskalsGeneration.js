@@ -1,4 +1,4 @@
-import mazeGeneration from "./mazeGeneration";
+
 
 const kruskalsGeneration={
     allSq:[],
@@ -41,6 +41,7 @@ const kruskalsGeneration={
             sq.setAttribute('key',i);
             document.getElementById(mazeId).appendChild(sq);  
             kruskalsGeneration.allSq.push(sq);
+            kruskalsGeneration.parents.push(-1);
         }
     },
     getNbrKey(currKey,direction){
@@ -177,10 +178,6 @@ const kruskalsGeneration={
             default:
                 break;
         };
-
-        for (var i=0;i<kruskalsGeneration.allSq.length;i++){
-            kruskalsGeneration.parents.push(-1);
-        }
 
         kruskalsGeneration.intervalCode=setInterval(()=>{
             if (kruskalsGeneration.edgeArray.length===0){

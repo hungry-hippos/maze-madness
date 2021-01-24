@@ -2,7 +2,6 @@ const primsGeneration={
     allSq:[],
     intervalCode:0,
     frontierSet:[],
-    exitKey:0,
 
     populateMaze(difficulty){
 
@@ -53,11 +52,9 @@ const primsGeneration={
         if (difficulty==='hard'){
             num=Math.floor(Math.random()*55.99);
         }
-        primsGeneration.allSq[num].classList.add('entrance');
         primsGeneration.allSq[num].classList.add('visited');
         primsGeneration.allSq[num].classList.add('current');
 
-        //correct this gimmickey ass code asap
         const nbrDirections=['up','down','left','right']
         for (var i=0;i<4;i++){
             const nbrKey=primsGeneration.getNbrKey(num,nbrDirections[i]);
@@ -66,21 +63,6 @@ const primsGeneration={
                 primsGeneration.frontierSet.push(nbrKey);
             }
         }
-    },
-    pickExitSq(difficulty){
-
-        var num=0;
-        if (difficulty==='easy'){
-            num=Math.floor(Math.random()*7.99)+56;
-        }
-        if (difficulty==='medium'){
-            num=Math.floor(Math.random()*19.99)+280;
-        }
-        if (difficulty==='hard'){
-            num=Math.floor(Math.random()*55.99)+1288;
-        }
-        
-        primsGeneration.exitKey=num;
     },
     getNbrKey(currKey,direction){
         const gridSize=primsGeneration.allSq.length;
@@ -168,12 +150,7 @@ const primsGeneration={
 
             primsGeneration.shuffleLastFrontierElement();
             const currFrontierPos=primsGeneration.frontierSet.pop();
-            primsGeneration.allSq[currFrontierPos].classList.add('current');
-
-            if (currFrontierPos===primsGeneration.exitKey){
-                primsGeneration.allSq[currFrontierPos].classList.add('exit');
-            }
-            
+            primsGeneration.allSq[currFrontierPos].classList.add('current');           
 
             nbrPositions.sort(()=>Math.random()-.5);
             var needsToMerge=true;
@@ -197,7 +174,6 @@ const primsGeneration={
     createMaze(difficulty){
         primsGeneration.populateMaze(difficulty);
         primsGeneration.pickStartingSq(difficulty);
-        primsGeneration.pickExitSq(difficulty);
         primsGeneration.stackRandomMazeGenerator(difficulty);
     }
 }

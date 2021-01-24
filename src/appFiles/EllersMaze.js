@@ -1,8 +1,9 @@
 import React, { useEffect,useState } from 'react'
-import mazeGeneration from './mazeGeneration'
+import ellersGeneration from './ellersGeneration'
 import './Maze.css'
 
-const DFSMaze=(props)=>{
+
+const EllersMaze=(props)=>{
     const {difficulty}=props;
 
     var mazeId="";
@@ -21,13 +22,13 @@ const DFSMaze=(props)=>{
     }
 
     useEffect(()=>{
-        mazeGeneration.createMaze(difficulty);
+        ellersGeneration.createMaze(difficulty);
         
-    })
+    },[])
     return <React.Fragment>
         <div id={mazeId}>
         </div>
     </React.Fragment>
 }
 
-export default DFSMaze
+export default EllersMaze

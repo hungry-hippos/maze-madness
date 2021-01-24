@@ -64,25 +64,10 @@ const mazeGeneration={
         mazeGeneration.firstKey=num;
         mazeGeneration.isVisited[num]=true;
         mazeGeneration.allSq[num].classList.add('current');
-        mazeGeneration.allSq[num].classList.add('entrance');
+        // mazeGeneration.allSq[num].classList.add('entrance');
 
         mazeGeneration.posStack.push(num);
         mazeGeneration.visitedCounter++;
-    },
-    pickExitSq(difficulty){
-
-        var num=0;
-        if (difficulty==='easy'){
-            num=Math.floor(Math.random()*7.99)+56;
-        }
-        if (difficulty==='medium'){
-            num=Math.floor(Math.random()*19.99)+280;
-        }
-        if (difficulty==='hard'){
-            num=Math.floor(Math.random()*55.99)+1288;
-        }
-        
-        mazeGeneration.exitKey=num;
     },
     currentMovement(currKey,direction){
         var nextKey=0;
@@ -199,12 +184,7 @@ const mazeGeneration={
             document.getElementsByClassName('current')[0].classList.add('visited');
             document.getElementsByClassName('current')[0].classList.remove('current');
             const currPos=mazeGeneration.posStack[mazeGeneration.posStack.length-1];
-            mazeGeneration.allSq[currPos].classList.add('current');
-
-            if (currPos===mazeGeneration.exitKey){
-                mazeGeneration.allSq[currPos].classList.add('exit');
-            }
-            
+            mazeGeneration.allSq[currPos].classList.add('current');          
 
             nbrPositions.sort(()=>Math.random()-.5);
 
@@ -246,7 +226,6 @@ const mazeGeneration={
 
         mazeGeneration.populateMaze(difficulty);
         mazeGeneration.pickStartingSq(difficulty);
-        mazeGeneration.pickExitSq(difficulty);
         mazeGeneration.stackRandomMazeGenerator(difficulty);
     }
 }

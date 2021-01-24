@@ -67,7 +67,7 @@ const mazeSolver={
 
         mazeSolver.intervalCode=setInterval(()=>{
 
-            if(mazeSolver.path.length==0){
+            if(mazeSolver.path.length===0){
                 clearInterval(mazeSolver.intervalCode);
                 return;
             }
