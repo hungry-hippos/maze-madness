@@ -4,16 +4,17 @@ import KruskalsMaze from './appFiles/KruskalsMaze'
 import DFSMaze from './appFiles/DFSMaze'
 import PrimsMaze from './appFiles/PrimsMaze'
 import EllersMaze from './appFiles/EllersMaze'
+import mazeSolver from './appFiles/mazeSolver'
 
 const SideMenu=(props)=>{
   
   const {setShowDFS,setShowPrims,setShowKruskals,setShowEllers}= props.mazeOptions;
-  const {setDifficulty}=props.setDifficulty;
+  const {difficulty,setDifficulty}=props.difficulty;
   const changeMaze=(mazeName)=>{
     setShowDFS(false);
     setShowKruskals(false);
     setShowPrims(false);
-    setShowEllers(true);
+    setShowEllers(false);
 
     switch(mazeName){
       case "prims":
@@ -33,12 +34,81 @@ const SideMenu=(props)=>{
     }
   }
 
+  function toggleHoverEntrance(event){
+    event.target.classList.toggle('hoverEntrance');
+  }
+  function pickEntrance(event){
+    const prevEntrance=document.getElementsByClassName('entrance');
+    if (prevEntrance.length!==0){
+      prevEntrance[0].classList.remove('entrance');
+    }
+    event.target.classList.add('entrance');
+  }
+  function toggleHoverExit(event){
+    event.target.classList.toggle('hoverExit');
+  }
+  function pickExit(event){
+    const prevExit=document.getElementsByClassName('exit');
+    if (prevExit.length!==0){
+      prevExit[0].classList.remove('exit');
+    }
+    event.target.classList.add('exit');
+  }
   const setEntrance=()=>{
     var sqId="";
+    switch(difficulty){
+        case "easy":
+            sqId="easySquare";
+            break;
+        case "medium":
+            sqId="mediumSquare";
+            break;
+        case "hard":
+            sqId="hardSquare";
+            break;
+        default:
+            break;
+    }
 
+    const allSq=document.getElementsByClassName(sqId);
+    for (var i=0;i<allSq.length;i++){
+
+      allSq[i].removeEventListener('mouseenter',toggleHoverExit);
+      allSq[i].removeEventListener('mouseout',toggleHoverExit);
+      allSq[i].removeEventListener('click',pickExit);
+
+      allSq[i].addEventListener('mouseenter',toggleHoverEntrance);
+      allSq[i].addEventListener('mouseout',toggleHoverEntrance);
+      allSq[i].addEventListener('click',pickEntrance);
+    }
   }
   const setExit=()=>{
-    console.log('exit');
+    var sqId="";
+    switch(difficulty){
+        case "easy":
+            sqId="easySquare";
+            break;
+        case "medium":
+            sqId="mediumSquare";
+            break;
+        case "hard":
+            sqId="hardSquare";
+            break;
+        default:
+            break;
+    }
+
+    const allSq=document.getElementsByClassName(sqId);
+    for (var i=0;i<allSq.length;i++){
+
+      allSq[i].removeEventListener('mouseenter',toggleHoverEntrance);
+      allSq[i].removeEventListener('mouseout',toggleHoverEntrance);
+      allSq[i].removeEventListener('click',pickEntrance);
+
+      allSq[i].addEventListener('mouseenter',toggleHoverExit);
+      allSq[i].addEventListener('mouseout',toggleHoverExit);
+      allSq[i].addEventListener('click',pickExit);
+    }
   }
   return <div id='sideMenu'>
     <div className='sideMenuBtn' onClick={()=>{changeMaze('prims')}}>PRIMS</div>
@@ -50,6 +120,8 @@ const SideMenu=(props)=>{
     <div className='sideMenuBtn' onClick={()=>{setDifficulty('hard')}}>hard</div>
     <div className='sideMenuBtn' onClick={setEntrance}>Set ENTRANCE</div>
     <div className='sideMenuBtn' onClick={setExit}>Set EXIT</div>
+    <div className='sideMenuBtn' onClick={()=>{mazeSolver.dfs(difficulty)}}>Solve DFS</div>
+    <div className='sideMenuBtn' onClick={()=>{mazeSolver.bfs(difficulty)}}>Solve BFS</div>
 
 
   </div>
@@ -81,7 +153,7 @@ function App() {
   const [difficulty,setDifficulty]=useState('easy');
   
   return <React.Fragment>
-    <SideMenu mazeOptions={{setShowDFS,setShowPrims,setShowKruskals,setShowEllers}} setDifficulty={{setDifficulty}}/>
+    <SideMenu mazeOptions={{setShowDFS,setShowPrims,setShowKruskals,setShowEllers}} difficulty={{difficulty,setDifficulty}}/>
     <MazeSection mazes={{showDFS,showPrims,showKruskals,showEllers}} difficulty={{difficulty}}/>
   </React.Fragment>
   

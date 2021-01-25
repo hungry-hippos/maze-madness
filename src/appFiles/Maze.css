@@ -50,8 +50,11 @@ box-sizing: border-box;
 .visited{background-color: white;}
 .explored{background-color: red;}
 .frontier{background-color: aqua;}
-.entrance{border-top: 10px solid green}
-.exit{border-bottom: 10px solid orange}
+
+.entrance{background-color:green !important}
+.hoverEntrance{background-color: greenyellow;}
+.exit{background-color: red !important}
+.hoverExit{background-color: orange;}
 
 .chicken{background-image: url(../images/dumbChickenClear.png);
 background-size: 100% 100%;
