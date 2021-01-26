@@ -8,6 +8,82 @@ const mazeSolver={
     nextBFSRound:[],
     currBFSRound:[],
 
+    pickEntrance(event){
+        const prevEntrance=document.getElementsByClassName('entrance');
+        if (prevEntrance.length!==0){
+          prevEntrance[0].classList.remove('entrance');
+        }
+        event.target.classList.add('entrance');
+    },
+    toggleHoverEntrance(event){
+        event.target.classList.toggle('hoverEntrance');
+    },
+    pickExit(event){
+        const prevExit=document.getElementsByClassName('exit');
+        if (prevExit.length!==0){
+          prevExit[0].classList.remove('exit');
+        }
+        event.target.classList.add('exit');
+    },
+    toggleHoverExit(event){
+        event.target.classList.toggle('hoverExit');
+    },
+    setEntrance(difficulty){
+        var sqId="";
+        switch(difficulty){
+            case "easy":
+                sqId="easySquare";
+                break;
+            case "medium":
+                sqId="mediumSquare";
+                break;
+            case "hard":
+                sqId="hardSquare";
+                break;
+            default:
+                break;
+            }
+
+        mazeSolver.allSq=document.getElementsByClassName(sqId);
+        for (var i=0;i<mazeSolver.allSq.length;i++){
+
+        mazeSolver.allSq[i].removeEventListener('mouseenter',mazeSolver.toggleHoverExit);
+        mazeSolver.allSq[i].removeEventListener('mouseout',mazeSolver.toggleHoverExit);
+        mazeSolver.allSq[i].removeEventListener('click',mazeSolver.pickExit);
+
+        mazeSolver.allSq[i].addEventListener('mouseenter',mazeSolver.toggleHoverEntrance);
+        mazeSolver.allSq[i].addEventListener('mouseout',mazeSolver.toggleHoverEntrance);
+        mazeSolver.allSq[i].addEventListener('click',mazeSolver.pickEntrance);
+        }
+    },
+    setExit(difficulty){
+        var sqId="";
+        switch(difficulty){
+            case "easy":
+                sqId="easySquare";
+                break;
+            case "medium":
+                sqId="mediumSquare";
+                break;
+            case "hard":
+                sqId="hardSquare";
+                break;
+            default:
+                break;
+        }
+    
+        mazeSolver.allSq=document.getElementsByClassName(sqId);
+        for (var i=0;i<mazeSolver.allSq.length;i++){
+    
+          mazeSolver.allSq[i].removeEventListener('mouseenter',mazeSolver.toggleHoverEntrance);
+          mazeSolver.allSq[i].removeEventListener('mouseout',mazeSolver.toggleHoverEntrance);
+          mazeSolver.allSq[i].removeEventListener('click',mazeSolver.pickEntrance);
+    
+          mazeSolver.allSq[i].addEventListener('mouseenter',mazeSolver.toggleHoverExit);
+          mazeSolver.allSq[i].addEventListener('mouseout',mazeSolver.toggleHoverExit);
+          mazeSolver.allSq[i].addEventListener('click',mazeSolver.pickExit);
+        }
+    },
     getNbrKey(currPos, direction){
         const gridSize=mazeSolver.allSq.length;
         var rowSize=0;
@@ -79,26 +155,21 @@ const mazeSolver={
     dfs(difficulty){
 
         var timeInterval=0;
-        var sqId="";
         switch(difficulty){
             case "easy":
                 timeInterval=40;
-                sqId="easySquare";
                 break;
             case "medium":
                 timeInterval=15;
-                sqId="mediumSquare";
                 break;
             case "hard":
                 timeInterval=1;
-                sqId="hardSquare";
                 break;
             default:
                 break;
         }
 
         //initialize allSq, isVisited, and path
-        mazeSolver.allSq=document.getElementsByClassName(sqId);
         for (var i=0;i<mazeSolver.allSq.length;i++){
             mazeSolver.isVisited.push(false);
             mazeSolver.prevV.push(-1);
@@ -141,26 +212,21 @@ const mazeSolver={
     },
     bfs(difficulty){
         var timeInterval=0;
-        var sqId="";
         switch(difficulty){
             case "easy":
                 timeInterval=40;
-                sqId="easySquare";
                 break;
             case "medium":
                 timeInterval=15;
-                sqId="mediumSquare";
                 break;
             case "hard":
                 timeInterval=100;
-                sqId="hardSquare";
                 break;
             default:
                 break;
         }
 
-        //initialize allSq, isVisited, and path
-        mazeSolver.allSq=document.getElementsByClassName(sqId);
+        //initialize isVisited, and path
         for (var i=0;i<mazeSolver.allSq.length;i++){
             mazeSolver.isVisited.push(false);
             mazeSolver.prevV.push(-1);
