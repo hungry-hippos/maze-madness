@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
-import mazeGeneration from './mazeGeneration'
+import cleanSlateGeneration from './cleanSlateGeneration'
 import './Maze.css'
 
-const DFSMaze=(props)=>{
+const CleanSlate=(props)=>{
     const {difficulty}=props;
 
     var mazeId="";
@@ -21,8 +21,7 @@ const DFSMaze=(props)=>{
     }
 
     useEffect(()=>{
-        mazeGeneration.createMaze(difficulty);
-        
+        cleanSlateGeneration.createMaze(difficulty);
     })
     return <React.Fragment>
         <div id={mazeId}>
@@ -30,4 +29,4 @@ const DFSMaze=(props)=>{
     </React.Fragment>
 }
 
-export default DFSMaze
+export default CleanSlate

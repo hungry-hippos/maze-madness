@@ -44,6 +44,11 @@ box-sizing: border-box;
     box-shadow: none;
     transition:.2s;
 }
+.cleanSlateSq{border:1px solid black;
+background-color: white;
+}
+
+
 .top{border-top:4px solid black}
 .bottom{border-bottom: 4px solid black;}
 .right{border-right:4px solid black}

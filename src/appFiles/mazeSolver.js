@@ -7,6 +7,8 @@ const mazeSolver={
     allSq:[],
     nextBFSRound:[],
     currBFSRound:[],
+    entranceCoord:[],
+    exitCoord:[],
 
     pickEntrance(event){
         const prevEntrance=document.getElementsByClassName('entrance');
@@ -263,6 +265,9 @@ const mazeSolver={
 
             }
         },timeInterval)
+    },
+    AStar(difficulty){
+        
     }
 }
 

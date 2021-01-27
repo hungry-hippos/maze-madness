@@ -120,7 +120,6 @@ const chupacabraGeneration={
             if (direction==="vertical"){
                 const TRCol=Math.floor(Math.random()*(width-2))+TLCol;
                 const TRRow=TLRow;
-                const BRCol=TRCol;
                 const BRRow=TLRow+height-1;
 
                 chupacabraGeneration.buildVerticalWall(TRRow,BRRow,TRCol);
@@ -138,7 +137,6 @@ const chupacabraGeneration={
                 const BLCol=TLCol;
                 const BLRow=Math.floor(Math.random()*(height-2))+TLRow;
                 const BRCol=TLCol+width-1;
-                const BRRow=BLRow;
 
                 chupacabraGeneration.buildHorizontalWall(BLCol,BRCol,BLRow);
 
