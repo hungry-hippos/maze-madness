@@ -7,8 +7,7 @@ const mazeSolver={
     allSq:[],
     nextBFSRound:[],
     currBFSRound:[],
-    entranceCoord:[],
-    exitCoord:[],
+    isMouseDown:false,
 
     pickEntrance(event){
         const prevEntrance=document.getElementsByClassName('entrance');
@@ -29,6 +28,20 @@ const mazeSolver={
     },
     toggleHoverExit(event){
         event.target.classList.toggle('hoverExit');
+    },
+    toggleHoverObstacle(event){
+
+        if (!mazeSolver.isMouseDown)
+            event.target.classList.toggle('hoverObstacle');
+        if (mazeSolver.isMouseDown)
+            event.target.classList.add('obstacle');
+    },
+    pickObstacle(event){
+        mazeSolver.isMouseDown=true;
+        event.target.classList.add('obstacle');
+    },
+    release(event){
+        mazeSolver.isMouseDown=false;
     },
     setEntrance(difficulty){
         var sqId="";
@@ -52,6 +65,11 @@ const mazeSolver={
         mazeSolver.allSq[i].removeEventListener('mouseenter',mazeSolver.toggleHoverExit);
         mazeSolver.allSq[i].removeEventListener('mouseout',mazeSolver.toggleHoverExit);
         mazeSolver.allSq[i].removeEventListener('click',mazeSolver.pickExit);
+
+        mazeSolver.allSq[i].removeEventListener('mouseenter',mazeSolver.toggleHoverObstacle);
+        mazeSolver.allSq[i].removeEventListener('mouseout',mazeSolver.toggleHoverObstacle);
+        mazeSolver.allSq[i].removeEventListener('mousedown',mazeSolver.pickObstacle);
+        mazeSolver.allSq[i].removeEventListener('mouseup',mazeSolver.release);
 
         mazeSolver.allSq[i].addEventListener('mouseenter',mazeSolver.toggleHoverEntrance);
         mazeSolver.allSq[i].addEventListener('mouseout',mazeSolver.toggleHoverEntrance);
@@ -80,10 +98,48 @@ const mazeSolver={
           mazeSolver.allSq[i].removeEventListener('mouseenter',mazeSolver.toggleHoverEntrance);
           mazeSolver.allSq[i].removeEventListener('mouseout',mazeSolver.toggleHoverEntrance);
           mazeSolver.allSq[i].removeEventListener('click',mazeSolver.pickEntrance);
+
+          mazeSolver.allSq[i].removeEventListener('mouseenter',mazeSolver.toggleHoverObstacle);
+          mazeSolver.allSq[i].removeEventListener('mouseout',mazeSolver.toggleHoverObstacle);
+          mazeSolver.allSq[i].removeEventListener('mousedown',mazeSolver.pickObstacle);
+          mazeSolver.allSq[i].removeEventListener('mouseup',mazeSolver.release);
     
           mazeSolver.allSq[i].addEventListener('mouseenter',mazeSolver.toggleHoverExit);
           mazeSolver.allSq[i].addEventListener('mouseout',mazeSolver.toggleHoverExit);
           mazeSolver.allSq[i].addEventListener('click',mazeSolver.pickExit);
+        }
+    },
+    setObstacle(difficulty){
+        var sqId="";
+        switch(difficulty){
+            case "easy":
+                sqId="easySquare";
+                break;
+            case "medium":
+                sqId="mediumSquare";
+                break;
+            case "hard":
+                sqId="hardSquare";
+                break;
+            default:
+                break;
+            }
+
+        mazeSolver.allSq=document.getElementsByClassName(sqId);
+        for (var i=0;i<mazeSolver.allSq.length;i++){
+
+        mazeSolver.allSq[i].removeEventListener('mouseenter',mazeSolver.toggleHoverExit);
+        mazeSolver.allSq[i].removeEventListener('mouseout',mazeSolver.toggleHoverExit);
+        mazeSolver.allSq[i].removeEventListener('click',mazeSolver.pickExit);
+
+        mazeSolver.allSq[i].removeEventListener('mouseenter',mazeSolver.toggleHoverEntrance);
+        mazeSolver.allSq[i].removeEventListener('mouseout',mazeSolver.toggleHoverEntrance);
+        mazeSolver.allSq[i].removeEventListener('click',mazeSolver.pickEntrance);
+
+        mazeSolver.allSq[i].addEventListener('mouseenter',mazeSolver.toggleHoverObstacle);
+        mazeSolver.allSq[i].addEventListener('mouseout',mazeSolver.toggleHoverObstacle);
+        mazeSolver.allSq[i].addEventListener('mousedown',mazeSolver.pickObstacle);
+        mazeSolver.allSq[i].addEventListener('mouseup',mazeSolver.release);
         }
     },
     getNbrKey(currPos, direction){
@@ -265,9 +321,6 @@ const mazeSolver={
 
             }
         },timeInterval)
-    },
-    AStar(difficulty){
-        
     }
 }
 

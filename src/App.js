@@ -7,7 +7,7 @@ import EllersMaze from './appFiles/EllersMaze'
 import ChupacabraMaze from './appFiles/ChupacabraMaze'
 import CleanSlate from './appFiles/CleanSlate'
 import mazeSolver from './appFiles/mazeSolver'
-import priorityQueue from './appFiles/priorityQueue'
+import AStarSolver from './appFiles/AStarSolver'
 
 const SideMenu=(props)=>{
   
@@ -27,10 +27,12 @@ const SideMenu=(props)=>{
 
     <div className='sideMenuBtn' onClick={()=>{mazeSolver.setEntrance(difficulty)}}>Set ENTRANCE</div>
     <div className='sideMenuBtn' onClick={()=>{mazeSolver.setExit(difficulty)}}>Set EXIT</div>
+    <div className='sideMenuBtn' onClick={()=>{mazeSolver.setObstacle(difficulty)}}>Set OBSTACLE</div>
+
 
     <div className='sideMenuBtn' onClick={()=>{mazeSolver.dfs(difficulty)}}>Solve DFS</div>
     <div className='sideMenuBtn' onClick={()=>{mazeSolver.bfs(difficulty)}}>Solve BFS</div>
-    <div className='sideMenuBtn' onClick={()=>{mazeSolver.AStar(difficulty)}}>Solve A*</div>
+    <div className='sideMenuBtn' onClick={()=>{AStarSolver.solve(difficulty)}}>Solve A*</div>
 
 
 
@@ -64,24 +66,6 @@ function App() {
 
   const [mazeName,setMazeName]=useState('');
   const [difficulty,setDifficulty]=useState('easy');
-
-  useEffect(()=>{
-    var PQ=new priorityQueue();
-    PQ.push([5,'dog']);
-    PQ.push([3,'ddra']);
-    PQ.push([12,'sd']);
-    
-    PQ.push([1200,'sssss']);
-    PQ.push([56,'me']);
-    PQ.push([2,'pop']);
-    PQ.push([1,'s']);
-    PQ.pop();
-    PQ.pop();
-    PQ.pop();
-    console.log(PQ.arr);
-
-
-  })
   
   return <React.Fragment>
     <SideMenu options={{difficulty,setDifficulty,setMazeName}}/>

@@ -63,6 +63,10 @@ background-color: white;
 .hoverEntrance{background-color: greenyellow;}
 .exit{background-color: red !important}
 .hoverExit{background-color: orange;}
+.PQ{background-color:yellow;}
+.set{background-color: red;}
+.obstacle{background-color: black;}
+.hoverObstacle{background-color:gray;}
 
 .chicken{background-image: url(../images/dumbChickenClear.png);
 background-size: 100% 100%;
