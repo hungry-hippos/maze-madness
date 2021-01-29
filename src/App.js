@@ -65,7 +65,7 @@ const MazeSection=(props)=>{
 function App() {
 
   const [mazeName,setMazeName]=useState('');
-  const [difficulty,setDifficulty]=useState('easy');
+  const [difficulty,setDifficulty]=useState('hard');
   
   return <React.Fragment>
     <SideMenu options={{difficulty,setDifficulty,setMazeName}}/>

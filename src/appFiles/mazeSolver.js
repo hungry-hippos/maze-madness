@@ -8,7 +8,30 @@ const mazeSolver={
     nextBFSRound:[],
     currBFSRound:[],
     isMouseDown:false,
+    mazeType:'',
 
+    cleanInstVars(){
+        mazeSolver.intervalCode=0;
+        mazeSolver.path=[];
+        mazeSolver.prevV=[];
+        mazeSolver.isVisited=[];
+        mazeSolver.allSq=[];
+        mazeSolver.nextBFSRound=[];
+        mazeSolver.currBFSRound=[];
+        mazeSolver.isMouseDown=false;
+        mazeSolver.mazeType='';
+
+        var curr=document.getElementsByClassName('current');
+        while(curr.length>0){
+            curr[0].classList.remove('current');
+        }
+        var explored=document.getElementsByClassName('explored');
+        while(explored.length>0){
+            explored[0].classList.remove('explored');
+        }
+
+        mazeSolver.allSq=document.getElementsByClassName('hardSquare');
+    },
     pickEntrance(event){
         const prevEntrance=document.getElementsByClassName('entrance');
         if (prevEntrance.length!==0){
@@ -142,7 +165,7 @@ const mazeSolver={
         mazeSolver.allSq[i].addEventListener('mouseup',mazeSolver.release);
         }
     },
-    getNbrKey(currPos, direction){
+    getNbrKey(currKey, direction){
         const gridSize=mazeSolver.allSq.length;
         var rowSize=0;
         switch(gridSize){
@@ -158,18 +181,35 @@ const mazeSolver={
             default:
                 break;
         }
-  
+
+        var up=0,down=0,right=0,left=0;
         switch (direction){
             case 'up':
-                return (mazeSolver.allSq[currPos].classList.contains('top'))?-1:currPos-rowSize;
+                return (mazeSolver.allSq[currKey].classList.contains('top'))?-1:currKey-rowSize;
             case 'down':
-                return (mazeSolver.allSq[currPos].classList.contains('bottom'))?-1:currPos+rowSize;
+                return (mazeSolver.allSq[currKey].classList.contains('bottom'))?-1:currKey+rowSize;
             case 'left':
-                return (mazeSolver.allSq[currPos].classList.contains('left'))?-1:currPos-1;
+                return (mazeSolver.allSq[currKey].classList.contains('left'))?-1:currKey-1;
             case 'right':
-                return (mazeSolver.allSq[currPos].classList.contains('right'))?-1:currPos+1;
+                return (mazeSolver.allSq[currKey].classList.contains('right'))?-1:currKey+1;
+            case 'upLeft':
+                up=mazeSolver.getNbrKey(currKey,'up');
+                left=mazeSolver.getNbrKey(currKey,'left');
+                return (up===-1 || left===-1)?-1:currKey-rowSize-1;
+            case 'upRight':
+                up=mazeSolver.getNbrKey(currKey,'up');
+                right=mazeSolver.getNbrKey(currKey,'right');
+                return (up===-1 || right===-1)?-1:currKey-rowSize+1;
+            case 'downLeft':
+                down=mazeSolver.getNbrKey(currKey,'down');
+                left=mazeSolver.getNbrKey(currKey,'left');
+                return (down===-1 || left===-1)?-1:currKey+rowSize-1;
+            case 'downRight':
+                down=mazeSolver.getNbrKey(currKey,'down');
+                right=mazeSolver.getNbrKey(currKey,'right');
+                return (down===-1 || right===-1)?-1:currKey+rowSize+1;
             default:
-                break;
+                return -1;
         }
     },
     extractPath(){
@@ -210,8 +250,40 @@ const mazeSolver={
             mazeSolver.allSq[lastPos].classList.add('current');
         },timeInterval);
     },
-    dfs(difficulty){
+    isDiagonalSneak(currKey,direction){
+        var horizontalNbrKey=0,verticalNbrKey=0;
+        switch(direction){
+            case 'upRight':
+                horizontalNbrKey=mazeSolver.getNbrKey(currKey,'right');
+                verticalNbrKey=mazeSolver.getNbrKey(currKey,'up');
+                break;
+            case 'upLeft':
+                horizontalNbrKey=mazeSolver.getNbrKey(currKey,'left');
+                verticalNbrKey=mazeSolver.getNbrKey(currKey,'up');
+                break;
+            case 'downRight':
+                horizontalNbrKey=mazeSolver.getNbrKey(currKey,'right');
+                verticalNbrKey=mazeSolver.getNbrKey(currKey,'down');
+                break;
+            case 'downLeft':
+                horizontalNbrKey=mazeSolver.getNbrKey(currKey,'left');
+                verticalNbrKey=mazeSolver.getNbrKey(currKey,'down');
+                break;
+            default:
+                break;
+        }
 
+        if (horizontalNbrKey==-1 || verticalNbrKey==-1){
+            console.log("NEGS");
+        }
+
+        const hzntlWall=mazeSolver.allSq[horizontalNbrKey].classList.contains('obstacle');
+        const verticalWall=mazeSolver.allSq[verticalNbrKey].classList.contains('obstacle');
+        return (hzntlWall && verticalWall);
+        
+    },
+    dfs(difficulty){
+        mazeSolver.cleanInstVars();
         var timeInterval=0;
         switch(difficulty){
             case "easy":
@@ -227,7 +299,7 @@ const mazeSolver={
                 break;
         }
 
-        //initialize allSq, isVisited, and path
+        //initialize allSq, isVisited, path, mazeType
         for (var i=0;i<mazeSolver.allSq.length;i++){
             mazeSolver.isVisited.push(false);
             mazeSolver.prevV.push(-1);
@@ -235,10 +307,13 @@ const mazeSolver={
         const entranceKey=document.getElementsByClassName('entrance')[0].getAttribute('key');
         mazeSolver.isVisited[entranceKey]=true;
         mazeSolver.path.push(entranceKey);
-
+        const cleanSlateSq=document.getElementsByClassName('cleanSlateSq');
+        mazeSolver.mazeType=(cleanSlateSq.length===0)?'maze':'cleanSlate';
 
         //actual dfs logic starts here
-        const nbrPositions=["up","left","right","down"];
+        const diagonalMoves=["right","left","up","down","upRight","upLeft","downRight","downLeft"];
+        const nonDiagonalMoves=["right","left","up","down"];
+        const nbrPositions=(mazeSolver.mazeType==="cleanSlate")?diagonalMoves:nonDiagonalMoves;
 
         mazeSolver.intervalCode=setInterval(()=>{
 
@@ -255,9 +330,13 @@ const mazeSolver={
             //if last element not exit, mark current as explored, look at nbrs
             mazeSolver.allSq[currPos].classList.remove('current');
             mazeSolver.allSq[currPos].classList.add('explored');
-            for (var i=0;i<4;i++){
+            for (var i=0;i<nbrPositions.length;i++){
                 const nbrKey=mazeSolver.getNbrKey(currPos,nbrPositions[i]);
-                if (nbrKey!==-1 && !mazeSolver.isVisited[nbrKey]){
+                if (nbrKey!==-1 && !mazeSolver.isVisited[nbrKey] && !mazeSolver.allSq[nbrKey].classList.contains('obstacle')){
+
+                    if (i>3 && mazeSolver.isDiagonalSneak(currPos,nbrPositions[i]))
+                        continue;
+
                     mazeSolver.isVisited[nbrKey]=true;
                     mazeSolver.path.push(nbrKey);
                     mazeSolver.prevV[nbrKey]=currPos;
@@ -269,6 +348,7 @@ const mazeSolver={
         },timeInterval)
     },
     bfs(difficulty){
+        mazeSolver.cleanInstVars();
         var timeInterval=0;
         switch(difficulty){
             case "easy":
@@ -284,17 +364,22 @@ const mazeSolver={
                 break;
         }
 
-        //initialize isVisited, and path
+
+        //initialize isVisited, path, and move types
         for (var i=0;i<mazeSolver.allSq.length;i++){
             mazeSolver.isVisited.push(false);
             mazeSolver.prevV.push(-1);
         }
+        const cleanSlateSq=document.getElementsByClassName('cleanSlateSq');
+        mazeSolver.mazeType=(cleanSlateSq.length===0)?'maze':'cleanSlate';
+        const diagonalMoves=["right","left","up","down","upRight","upLeft","downRight","downLeft"];
+        const nonDiagonalMoves=["right","left","up","down"];
+        const nbrPositions=(mazeSolver.mazeType==="cleanSlate")?diagonalMoves:nonDiagonalMoves;
+
+        //actual bfs logic starts here
         const entranceKey=document.getElementsByClassName('entrance')[0].getAttribute('key');
         mazeSolver.isVisited[entranceKey]=true;
         mazeSolver.nextBFSRound.push(entranceKey);
-
-        const nbrPositions=["up","down","left","right"];
-
 
         mazeSolver.intervalCode=setInterval(()=>{
 
@@ -309,16 +394,19 @@ const mazeSolver={
                     mazeSolver.extractPath();
                     mazeSolver.backTrackPath();
                 }
-                for (var i=0;i<4;i++){
+                for (var i=0;i<nbrPositions.length;i++){
                     const nbrKey=mazeSolver.getNbrKey(currKey,nbrPositions[i]);
-                    if (nbrKey!==-1 && !mazeSolver.isVisited[nbrKey]){
+                    if (nbrKey!==-1 && !mazeSolver.isVisited[nbrKey] && !mazeSolver.allSq[nbrKey].classList.contains('obstacle')){
+
+                        if (i>3 && mazeSolver.isDiagonalSneak(currKey,nbrPositions[i]))
+                            continue;
+
                         mazeSolver.isVisited[nbrKey]=true;
                         mazeSolver.prevV[nbrKey]=currKey;
                         mazeSolver.allSq[nbrKey].classList.add('explored');
                         mazeSolver.nextBFSRound.push(nbrKey);
                     }
                 }
-
             }
         },timeInterval)
     }

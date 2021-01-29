@@ -114,12 +114,10 @@ const primsGeneration={
         primsGeneration.allSq[visitedKey].classList.remove('visitedKey');
     },
     shuffleLastFrontierElement(){
-        console.log(primsGeneration.frontierSet);
         const num=Math.floor(Math.random()*primsGeneration.frontierSet.length*.99);
         const temp=primsGeneration.frontierSet[num];
         primsGeneration.frontierSet[num]=primsGeneration.frontierSet[primsGeneration.frontierSet.length-1];
         primsGeneration.frontierSet[primsGeneration.frontierSet.length-1]=temp;
-        console.log(primsGeneration.frontierSet);
     },
     stackRandomMazeGenerator(difficulty){
 
