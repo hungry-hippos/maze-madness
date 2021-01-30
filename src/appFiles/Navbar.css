@@ -15,14 +15,24 @@ margin:0;
 height:100%;
 box-sizing: border-box;
 }
-.dullSection{background-color: rgb(88, 88, 88);
-color:gray;
+.dullSection{background-color: #151414c7;
+position:absolute;
+top:0;
+left:0;
+right:0;
+bottom:0;
 }
+#leftDullScreen{border-radius:30px 0 0 30px}
+#rightDullScreen{border-radius:0 30px 30px 0}
+
 
 #firstNavbarSection{display: flex;}
 #pickMaze{border-right:thin solid black;
 padding:0 20px;
 text-align: center;
+position:relative;
+background-color: white;
+border-radius: 30px 0 0 30px;
 }
 #mazeMenu{display: block;
 margin: 5px auto 0 auto;
@@ -30,6 +40,10 @@ font-size:20px;
 }
 #makeYourOwn{padding:0 20px;
 text-align: center;
+position:relative;
+background-color: white;
+border-radius: 0 30px 30px 0;
+
 }
 #makeYourOwnCheckbox{display: block;
 margin: 5px auto 0;
@@ -39,22 +53,39 @@ width: 30px;
 
 #secondNavbarSectionGenerate{padding:20px 20px;
 }
-#secondNavbarSectionBuild{font-size:20px;
-}
 
 .setSquare{width:150px;
-display: inline-block;
-text-align: center;
-line-height: 1.2;
-font-size:22px;
+    display: inline-block;
+    text-align: center;
+    margin:0 5px;
+    }
+#buildWallsBtn{font-size: 18px;
+padding: 14px;}
+#setEntranceBtn{font-size:18px;
+line-height:1.2;
+padding:10px;
+}
+#setExitBtn{font-size:18px;
+line-height:1.2;
+padding:10px;
+}
+#thirdNavbarSection{margin-left:50px; }
+#fourthNavbarSection{display:flex;
+margin-left:90px;
 }
 #algoMenu{display:block;
-font-size:20px;
+font-size:19px;
 margin:10px auto;
 }
 #sendItBtn{font-size:20px;
-margin:10px;
 height:80%;
+display: inline-block;
+margin:10px 20px;
+font-weight: bold;
 }
 
-.hidden{display:none}
+.hidden{display:none !important}
+
+.blackBtn{background-color: #343a40 !important; color:white}
+.greenBtn{background-color: #28a745 !important; color:white}
+.redBtn{background-color:#dc3545 !important; color:white}

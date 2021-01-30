@@ -38,6 +38,15 @@ const mazeSolver={
           prevEntrance[0].classList.remove('entrance');
         }
         event.target.classList.add('entrance');
+
+        for (var i=0;i<mazeSolver.allSq.length;i++){    
+            mazeSolver.allSq[i].removeEventListener('mouseenter',mazeSolver.toggleHoverEntrance);
+            mazeSolver.allSq[i].removeEventListener('mouseout',mazeSolver.toggleHoverEntrance);
+            mazeSolver.allSq[i].removeEventListener('click',mazeSolver.pickEntrance);
+        }
+
+        const setBtn=document.getElementsByClassName('setBtn');
+        setBtn[1].classList.remove('greenBtn');
     },
     toggleHoverEntrance(event){
         event.target.classList.toggle('hoverEntrance');
@@ -48,6 +57,15 @@ const mazeSolver={
           prevExit[0].classList.remove('exit');
         }
         event.target.classList.add('exit');
+
+        for (var i=0;i<mazeSolver.allSq.length;i++){      
+            mazeSolver.allSq[i].removeEventListener('mouseenter',mazeSolver.toggleHoverExit);
+            mazeSolver.allSq[i].removeEventListener('mouseout',mazeSolver.toggleHoverExit);
+            mazeSolver.allSq[i].removeEventListener('click',mazeSolver.pickExit);
+        }
+
+        const setBtn=document.getElementsByClassName('setBtn');
+        setBtn[2].classList.remove('redBtn');
     },
     toggleHoverExit(event){
         event.target.classList.toggle('hoverExit');

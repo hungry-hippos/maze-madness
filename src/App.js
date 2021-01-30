@@ -28,9 +28,9 @@ const SideMenu=(props)=>{
     <div className='sideMenuBtn' id='sidebarSetObstacle' onClick={()=>{mazeSolver.setObstacle(difficulty)}}>Set OBSTACLE</div>
 
 
-    <div className='sideMenuBtn' onClick={()=>{mazeSolver.dfs(difficulty)}}>Solve DFS</div>
-    <div className='sideMenuBtn' onClick={()=>{mazeSolver.bfs(difficulty)}}>Solve BFS</div>
-    <div className='sideMenuBtn' onClick={()=>{AStarSolver.solve(difficulty)}}>Solve A*</div>
+    <div className='sideMenuBtn' id='solveDFS' onClick={()=>{mazeSolver.dfs(difficulty)}}>Solve DFS</div>
+    <div className='sideMenuBtn' id='solveBFS' onClick={()=>{mazeSolver.bfs(difficulty)}}>Solve BFS</div>
+    <div className='sideMenuBtn' id='solveAStar' onClick={()=>{AStarSolver.solve(difficulty)}}>Solve A*</div>
 
   </div>
 
