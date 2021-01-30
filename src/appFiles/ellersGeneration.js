@@ -5,7 +5,13 @@ const ellersGeneration={
     rowSet:{},
     parents:[],
 
-    //initialized allSq and isVisited arrays
+    clean(){
+        ellersGeneration.allSq=[];
+        ellersGeneration.intervalCode=0;
+        ellersGeneration.currKey=0;
+        ellersGeneration.rowSet={};
+        ellersGeneration.parents=[];
+    },
     populateMaze(difficulty){
 
         var numOfSquares=0;
@@ -135,6 +141,8 @@ const ellersGeneration={
         ellersGeneration.rowSet=new Set();
         ellersGeneration.intervalCode=setInterval(()=>{
 
+            for (var i=0;i<4;i++){
+
             if (ellersGeneration.currKey!==0){
                 document.getElementsByClassName('current')[0].classList.remove('current');
             }
@@ -203,10 +211,12 @@ const ellersGeneration={
 
             //moving currKey to next square
             ellersGeneration.currKey++;
+        }
             
         },timeInterval)
     },
     createMaze(difficulty){
+        ellersGeneration.clean();
         ellersGeneration.populateMaze(difficulty);
         ellersGeneration.stackRandomMazeGenerator(difficulty);
     }

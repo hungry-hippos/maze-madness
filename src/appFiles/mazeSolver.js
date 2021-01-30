@@ -54,6 +54,9 @@ const mazeSolver={
     },
     toggleHoverObstacle(event){
 
+        if (event.target.classList.contains('obstacle'))
+            return;
+            
         if (!mazeSolver.isMouseDown)
             event.target.classList.toggle('hoverObstacle');
         if (mazeSolver.isMouseDown)
@@ -62,6 +65,7 @@ const mazeSolver={
     pickObstacle(event){
         mazeSolver.isMouseDown=true;
         event.target.classList.add('obstacle');
+        event.target.classList.remove('hoverObstacle');
     },
     release(event){
         mazeSolver.isMouseDown=false;

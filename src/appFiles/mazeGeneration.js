@@ -1,3 +1,5 @@
+import mazeSolver from "./mazeSolver";
+
 const mazeGeneration={
     allSq:[],
     isVisited:[],
@@ -7,7 +9,15 @@ const mazeGeneration={
     visitedCounter:0,
     intervalCode:0,
 
-    //initialized allSq and isVisited arrays
+    clean(){
+        mazeGeneration.allSq=[];
+        mazeGeneration.isVisited=[];
+        mazeGeneration.firstKey=0;
+        mazeGeneration.exitKey=0;
+        mazeGeneration.posStack=[];
+        mazeGeneration.visitedCounter=0;
+        mazeGeneration.intervalCode=0;
+    },
     populateMaze(difficulty){
 
         var numOfSquares=0;
@@ -223,7 +233,7 @@ const mazeGeneration={
     },
     //easily called function that calls all steps required to generate the maze
     createMaze(difficulty){
-
+        mazeGeneration.clean();
         mazeGeneration.populateMaze(difficulty);
         mazeGeneration.pickStartingSq(difficulty);
         mazeGeneration.stackRandomMazeGenerator(difficulty);

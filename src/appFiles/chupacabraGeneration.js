@@ -7,7 +7,13 @@ const chupacabraGeneration={
     cols:0,
     rows:0,
 
-    //initialized allSq and isVisited arrays
+    clean(){
+        chupacabraGeneration.allSq=[];
+        chupacabraGeneration.intervalCode=0;
+        chupacabraGeneration.stack=[];
+        chupacabraGeneration.cols=0;
+        chupacabraGeneration.rows=0;
+    },
     populateMaze(difficulty){
         var numOfSquares=0;
         var sqId="";
@@ -151,9 +157,10 @@ const chupacabraGeneration={
             }
             
 
-        },50)
+        },4)
     },
     createMaze(difficulty){
+        chupacabraGeneration.clean();
         chupacabraGeneration.populateMaze(difficulty);
         chupacabraGeneration.stackMazeGenerator();
     }

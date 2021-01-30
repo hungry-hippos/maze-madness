@@ -6,6 +6,13 @@ const kruskalsGeneration={
     edgeArray:[],
     intervalCode:0,
     parents:[],
+    clean(){
+        kruskalsGeneration.allSq=[];
+        kruskalsGeneration.edgeSet=[];
+        kruskalsGeneration.edgeArray=[];
+        kruskalsGeneration.intervalCode=0;
+        kruskalsGeneration.parents=[];
+    },
     populateMaze(difficulty){
 
         var numOfSquares=0;
@@ -180,24 +187,27 @@ const kruskalsGeneration={
         };
 
         kruskalsGeneration.intervalCode=setInterval(()=>{
-            if (kruskalsGeneration.edgeArray.length===0){
-                clearInterval(kruskalsGeneration.intervalCode);
-                return;
-            }
+            for (var i=0;i<7;i++){
+                if (kruskalsGeneration.edgeArray.length===0){
+                    clearInterval(kruskalsGeneration.intervalCode);
+                    return;
+                }
 
-            const currEdge=kruskalsGeneration.edgeArray.pop();
-            const u=currEdge[0], v=currEdge[1];
-            const parentU=kruskalsGeneration.findParent(u);
-            const parentV=kruskalsGeneration.findParent(v);
+                const currEdge=kruskalsGeneration.edgeArray.pop();
+                const u=currEdge[0], v=currEdge[1];
+                const parentU=kruskalsGeneration.findParent(u);
+                const parentV=kruskalsGeneration.findParent(v);
 
-            if (parentU!==parentV){
-                kruskalsGeneration.unionParents(parentU,parentV);
-                kruskalsGeneration.mergeSquares(u,v);
+                if (parentU!==parentV){
+                    kruskalsGeneration.unionParents(parentU,parentV);
+                    kruskalsGeneration.mergeSquares(u,v);
+                }
             }
         },timeInterval)
     },
 
     createMaze(difficulty){
+        kruskalsGeneration.clean();
         kruskalsGeneration.populateMaze(difficulty);
         kruskalsGeneration.getEdgeSet();
         kruskalsGeneration.setToArray();

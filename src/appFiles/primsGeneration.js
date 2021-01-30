@@ -3,6 +3,11 @@ const primsGeneration={
     intervalCode:0,
     frontierSet:[],
 
+    clearVars(){
+        primsGeneration.allSq=[];
+        primsGeneration.intervalCode=0;
+        primsGeneration.frontierSet=[];
+    },
     populateMaze(difficulty){
 
         var numOfSquares=0;
@@ -140,7 +145,6 @@ const primsGeneration={
         primsGeneration.intervalCode=setInterval(()=>{
 
             document.getElementsByClassName('current')[0].classList.remove('current');
-
             if (primsGeneration.frontierSet.length===0){
                 clearInterval(primsGeneration.intervalCode);
                 return;
@@ -170,6 +174,7 @@ const primsGeneration={
         },timeInterval)
     },
     createMaze(difficulty){
+        primsGeneration.clearVars();
         primsGeneration.populateMaze(difficulty);
         primsGeneration.pickStartingSq(difficulty);
         primsGeneration.stackRandomMazeGenerator(difficulty);

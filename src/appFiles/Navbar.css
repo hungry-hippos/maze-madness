@@ -1,0 +1,60 @@
+
+body{font-family: 'Roboto Mono, monospace';}
+#navbarMain{height:100px;
+position: absolute;
+top:0;
+left:0;
+right:0;
+background-color: rgb(207, 204, 204);
+display: flex;
+font-size:25px;
+}
+
+.navbarSection{padding:10px;
+margin:0;
+height:100%;
+box-sizing: border-box;
+}
+.dullSection{background-color: rgb(88, 88, 88);
+color:gray;
+}
+
+#firstNavbarSection{display: flex;}
+#pickMaze{border-right:thin solid black;
+padding:0 20px;
+text-align: center;
+}
+#mazeMenu{display: block;
+margin: 5px auto 0 auto;
+font-size:20px;
+}
+#makeYourOwn{padding:0 20px;
+text-align: center;
+}
+#makeYourOwnCheckbox{display: block;
+margin: 5px auto 0;
+height: 30px;
+width: 30px;
+}
+
+#secondNavbarSectionGenerate{padding:20px 20px;
+}
+#secondNavbarSectionBuild{font-size:20px;
+}
+
+.setSquare{width:150px;
+display: inline-block;
+text-align: center;
+line-height: 1.2;
+font-size:22px;
+}
+#algoMenu{display:block;
+font-size:20px;
+margin:10px auto;
+}
+#sendItBtn{font-size:20px;
+margin:10px;
+height:80%;
+}
+
+.hidden{display:none}

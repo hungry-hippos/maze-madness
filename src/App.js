@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import KruskalsMaze from './appFiles/KruskalsMaze'
 import DFSMaze from './appFiles/DFSMaze'
 import PrimsMaze from './appFiles/PrimsMaze'
@@ -8,33 +9,28 @@ import ChupacabraMaze from './appFiles/ChupacabraMaze'
 import CleanSlate from './appFiles/CleanSlate'
 import mazeSolver from './appFiles/mazeSolver'
 import AStarSolver from './appFiles/AStarSolver'
+import Navbar from './appFiles/Navbar.js'
 
 const SideMenu=(props)=>{
   
-  const {difficulty,setDifficulty,setMazeName}=props.options;
+  const {difficulty,setMazeName}=props.options;
 
-  return <div id='sideMenu'>
-    <div className='sideMenuBtn' onClick={()=>{setMazeName('prims')}}>PRIMS</div>
-    <div className='sideMenuBtn' onClick={()=>{setMazeName('kruskals')}}>KRUSKALS</div>
-    <div className='sideMenuBtn' onClick={()=>{setMazeName('DFS')}}>DFS</div>
-    <div className='sideMenuBtn' onClick={()=>{setMazeName('ellers')}}>ELLERS</div>
-    <div className='sideMenuBtn' onClick={()=>{setMazeName('chupacabra')}}>CHUPACABRA</div>
-    <div className='sideMenuBtn' onClick={()=>{setMazeName('cleanSlate')}}>CLEAN SLATE</div>
+  return <div id='sideMenu' className='hidden'>
+    <div className='sideMenuBtn' id='sidebarPrims' onClick={()=>{setMazeName('prims')}}>PRIMS</div>
+    <div className='sideMenuBtn' id='sidebarKruskals' onClick={()=>{setMazeName('kruskals')}}>KRUSKALS</div>
+    <div className='sideMenuBtn' id='sidebarDFS' onClick={()=>{setMazeName('DFS')}}>DFS</div>
+    <div className='sideMenuBtn' id='sidebarEllers' onClick={()=>{setMazeName('ellers')}}>ELLERS</div>
+    <div className='sideMenuBtn' id='sidebarChupacabra' onClick={()=>{setMazeName('chupacabra')}}>CHUPACABRA</div>
+    <div className='sideMenuBtn' id='sidebarCleanSlate' onClick={()=>{setMazeName('cleanSlate')}}>CLEAN SLATE</div>
 
-    <div className='sideMenuBtn' onClick={()=>{setDifficulty('easy')}}>easy</div>
-    <div className='sideMenuBtn' onClick={()=>{setDifficulty('medium')}}>medium</div>
-    <div className='sideMenuBtn' onClick={()=>{setDifficulty('hard')}}>hard</div>
-
-    <div className='sideMenuBtn' onClick={()=>{mazeSolver.setEntrance(difficulty)}}>Set ENTRANCE</div>
-    <div className='sideMenuBtn' onClick={()=>{mazeSolver.setExit(difficulty)}}>Set EXIT</div>
-    <div className='sideMenuBtn' onClick={()=>{mazeSolver.setObstacle(difficulty)}}>Set OBSTACLE</div>
+    <div className='sideMenuBtn' id='sidebarSetEntrance' onClick={()=>{mazeSolver.setEntrance(difficulty)}}>Set ENTRANCE</div>
+    <div className='sideMenuBtn' id='sidebarSetExit' onClick={()=>{mazeSolver.setExit(difficulty)}}>Set EXIT</div>
+    <div className='sideMenuBtn' id='sidebarSetObstacle' onClick={()=>{mazeSolver.setObstacle(difficulty)}}>Set OBSTACLE</div>
 
 
     <div className='sideMenuBtn' onClick={()=>{mazeSolver.dfs(difficulty)}}>Solve DFS</div>
     <div className='sideMenuBtn' onClick={()=>{mazeSolver.bfs(difficulty)}}>Solve BFS</div>
     <div className='sideMenuBtn' onClick={()=>{AStarSolver.solve(difficulty)}}>Solve A*</div>
-
-
 
   </div>
 
@@ -56,7 +52,7 @@ const MazeSection=(props)=>{
     case 'cleanSlate':
       return <CleanSlate difficulty={difficulty} />
     default:
-      return <React.Fragment />
+      return <div id='hardMaze'></div>
   }
 
   
@@ -70,6 +66,7 @@ function App() {
   return <React.Fragment>
     <SideMenu options={{difficulty,setDifficulty,setMazeName}}/>
     <MazeSection options={{mazeName,difficulty}}/>
+    <Navbar/>
   </React.Fragment>
   
 }
