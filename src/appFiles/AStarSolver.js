@@ -180,25 +180,25 @@ const AStarSolver={
 
         AStarSolver.intervalCode=setInterval(()=>{
 
+            if (AStarSolver.nextPQ.size()==0){
+                clearInterval(AStarSolver.intervalCode);
+                return;
+            }
+
             const curr=AStarSolver.nextPQ.top();
             AStarSolver.nextPQ.pop();
 
             var currKey=curr[1];
 
-            if (AStarSolver.nextPQ.size()===0){
-                clearInterval(AStarSolver.intervalCode);
-                return;
-            }
-
             //early release to avoid processing nodes that are already in set
             while(AStarSolver.allSq[currKey].classList.contains('set')){
-                const curr=AStarSolver.nextPQ.top();
-                AStarSolver.nextPQ.pop();
-                currKey=curr[1];
-                if (AStarSolver.nextPQ.size()===1){
+                if (AStarSolver.nextPQ.size()==0){
                     clearInterval(AStarSolver.intervalCode);
                     return;
                 }
+                const curr=AStarSolver.nextPQ.top();
+                AStarSolver.nextPQ.pop();
+                currKey=curr[1];
             }
 
             AStarSolver.allSq[currKey].classList.remove('PQ');

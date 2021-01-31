@@ -105,6 +105,10 @@ const mazeSolver={
                 break;
             }
 
+        var hoverEnt=document.getElementsByClassName('hoverEntrance');
+        while(hoverEnt.length>0){
+            hoverEnt[0].classList.remove('hoverEntrance');
+        }
         mazeSolver.allSq=document.getElementsByClassName(sqId);
         for (var i=0;i<mazeSolver.allSq.length;i++){
 
@@ -138,6 +142,10 @@ const mazeSolver={
                 break;
         }
     
+        var setExit=document.getElementsByClassName('hoverExit');
+        while(setExit.length>0){
+            setExit[0].classList.remove('hoverExit');
+        }
         mazeSolver.allSq=document.getElementsByClassName(sqId);
         for (var i=0;i<mazeSolver.allSq.length;i++){
     

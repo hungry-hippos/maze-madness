@@ -56,6 +56,9 @@ class priorityQueue{
     }
     pop(){
         const lastNode=this.arr.pop();
+        if (this.arr.length===0)
+            return;
+            
         this.arr[0]=lastNode;
         this.heapifyDown(0);
     }
