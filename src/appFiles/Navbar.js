@@ -100,7 +100,6 @@ const Navbar=()=>{
         const algo=document.getElementById('algoMenu').value;
         const exit=document.getElementsByClassName('exit');
         const entrance=document.getElementsByClassName('entrance');
-        console.log(algo);
 
         if (algo!=='empty'){
             document.getElementById('algoMenu').classList.remove('missingAlgoShade');

@@ -180,19 +180,25 @@ const AStarSolver={
 
         AStarSolver.intervalCode=setInterval(()=>{
 
-            console.log(AStarSolver.nextPQ.size());
-            
-
             const curr=AStarSolver.nextPQ.top();
             AStarSolver.nextPQ.pop();
 
             var currKey=curr[1];
+
+            if (AStarSolver.nextPQ.size()===0){
+                clearInterval(AStarSolver.intervalCode);
+                return;
+            }
 
             //early release to avoid processing nodes that are already in set
             while(AStarSolver.allSq[currKey].classList.contains('set')){
                 const curr=AStarSolver.nextPQ.top();
                 AStarSolver.nextPQ.pop();
                 currKey=curr[1];
+                if (AStarSolver.nextPQ.size()===1){
+                    clearInterval(AStarSolver.intervalCode);
+                    return;
+                }
             }
 
             AStarSolver.allSq[currKey].classList.remove('PQ');
@@ -222,7 +228,6 @@ const AStarSolver={
                 AStarSolver.nextPQ.push([nbrF,nbrKey]);
 
                 if (nbrKey===AStarSolver.exitKey){
-                    console.log('HIT');
                     clearInterval(AStarSolver.intervalCode);
                     AStarSolver.extractPath();
                     AStarSolver.backTrackPath();
@@ -230,13 +235,6 @@ const AStarSolver={
                 }
 
             }
-
-            if (AStarSolver.nextPQ.size()==0){
-                console.log("EMPY PQ")
-                clearInterval(AStarSolver.intervalCode);
-                return;
-            }
-
         },10)
 
 
