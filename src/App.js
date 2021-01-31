@@ -58,6 +58,23 @@ const MazeSection=(props)=>{
   
 }
 
+// function App(){
+//   const [windowSize,setWindowSize]=useState([]);
+
+//   useEffect(()=>{
+//     var intCode=setInterval((e)=>{
+//       const w=window.innerWidth, h=window.innerHeight;
+//       if (w<350 && h<1500){
+//         console.log("PLEASE zOOM OUT");
+//       }else{
+//         console.log(e);
+//       }
+//     },500)
+//   })
+
+//   return <React.Fragment>HI</React.Fragment>
+// }
+
 function App() {
 
   const [mazeName,setMazeName]=useState('');
