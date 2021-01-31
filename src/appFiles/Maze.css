@@ -68,6 +68,7 @@ background-color: white;
 .obstacle{background-color: black;}
 .hoverObstacle{background-color:gray;}
 
+
 .chicken{background-image: url(../images/dumbChickenClear.png);
 background-size: 100% 100%;
 }

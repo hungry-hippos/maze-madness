@@ -179,6 +179,10 @@ const AStarSolver={
 
 
         AStarSolver.intervalCode=setInterval(()=>{
+
+            console.log(AStarSolver.nextPQ.size());
+            
+
             const curr=AStarSolver.nextPQ.top();
             AStarSolver.nextPQ.pop();
 
@@ -225,6 +229,12 @@ const AStarSolver={
                     return;
                 }
 
+            }
+
+            if (AStarSolver.nextPQ.size()==0){
+                console.log("EMPY PQ")
+                clearInterval(AStarSolver.intervalCode);
+                return;
             }
 
         },10)

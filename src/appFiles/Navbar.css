@@ -69,9 +69,14 @@ padding:10px;
 line-height:1.2;
 padding:10px;
 }
-#thirdNavbarSection{margin-left:50px; }
+#thirdNavbarSection{margin-left:50px;
+transition:1s;
+opacity:1;
+}
 #fourthNavbarSection{display:flex;
 margin-left:90px;
+transition:1s;
+opacity:1;
 }
 #algoMenu{display:block;
 font-size:19px;
@@ -89,3 +94,11 @@ font-weight: bold;
 .blackBtn{background-color: #343a40 !important; color:white}
 .greenBtn{background-color: #28a745 !important; color:white}
 .redBtn{background-color:#dc3545 !important; color:white}
+
+.missingAlgoShade{box-shadow: 0 0 10px 5px red;}
+.resetNavbarBtn{height:100%;
+font-size:20px;
+margin:0 10px;
+padding:10px 20px;
+}
+#fifthNavbarSection{margin-left:90px}

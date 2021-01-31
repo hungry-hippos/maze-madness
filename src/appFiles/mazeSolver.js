@@ -1,3 +1,4 @@
+import mazeGeneration from "./mazeGeneration";
 
 const mazeSolver={
     intervalCode:0,
@@ -339,6 +340,12 @@ const mazeSolver={
 
         mazeSolver.intervalCode=setInterval(()=>{
 
+            //no path to exit exists
+            if (mazeSolver.path.length===0){
+                clearInterval(mazeSolver.intervalCode);
+                return;
+            }
+
             //get last element in path
             const currPos=parseInt(mazeSolver.path[mazeSolver.path.length-1],10);
 
@@ -404,6 +411,12 @@ const mazeSolver={
         mazeSolver.nextBFSRound.push(entranceKey);
 
         mazeSolver.intervalCode=setInterval(()=>{
+
+            //no path to exit exists
+            if (mazeSolver.nextBFSRound.length===0){
+                clearInterval(mazeSolver.intervalCode);
+                return;
+            }
 
             mazeSolver.currBFSRound=mazeSolver.nextBFSRound.concat();
             mazeSolver.nextBFSRound=[];

@@ -23,6 +23,7 @@ const Navbar=()=>{
             document.getElementById('buildWalls').classList.add('hidden');
             document.getElementById('thirdNavbarSection').classList.add('hidden');
             document.getElementById('fourthNavbarSection').classList.add('hidden');
+
         })
         document.getElementById('makeYourOwnCheckbox').addEventListener('click',()=>{
             document.getElementById('mazeMenu').selectedIndex=0;
@@ -32,11 +33,13 @@ const Navbar=()=>{
             document.getElementById('thirdNavbarSection').classList.remove('hidden');
             document.getElementById('fourthNavbarSection').classList.remove('hidden');
 
+
             document.getElementById('sidebarCleanSlate').click();
         })
         document.getElementById('generateBtn').addEventListener('click',()=>{
             document.getElementById('thirdNavbarSection').classList.remove('hidden');
             document.getElementById('fourthNavbarSection').classList.remove('hidden');
+
         })
 
         //clicking on a buildWall/setEntrance/setExit btn fully colors it and unselects other btns
@@ -95,7 +98,79 @@ const Navbar=()=>{
     }
     const sendIt=()=>{
         const algo=document.getElementById('algoMenu').value;
-        document.getElementById(algo).click();
+        const exit=document.getElementsByClassName('exit');
+        const entrance=document.getElementsByClassName('entrance');
+        console.log(algo);
+
+        if (algo!=='empty'){
+            document.getElementById('algoMenu').classList.remove('missingAlgoShade');
+        }
+        if (algo==="empty"){
+            document.getElementById('algoMenu').classList.add('missingAlgoShade');
+        }
+        if (entrance.length===0){
+            document.getElementById('setEntranceBtn').click();
+        }
+        else if (exit.length===0){
+            document.getElementById('setExitBtn').click();
+        }
+
+        if (algo!=='empty' && entrance.length!==0 && exit.length!==0){
+            document.getElementById(algo).click();
+            document.getElementById('fourthNavbarSection').classList.add('hidden');
+            document.getElementById('fifthNavbarSection').classList.remove('hidden');
+        }
+    }
+    const cleanPath=()=>{
+        var explored=document.getElementsByClassName('explored');
+        while(explored.length>0){
+            explored[0].classList.remove('explored');
+        }
+
+        var current=document.getElementsByClassName('current');
+        while(current.length>0){
+            current[0].classList.remove('current');
+        }
+
+        var set=document.getElementsByClassName('set');
+        while(set.length>0){
+            set[0].classList.remove('set');
+        }
+
+        var PQ=document.getElementsByClassName('PQ');
+        while(PQ.length>0){
+            PQ[0].classList.remove('PQ');
+        }
+
+        document.getElementById('fifthNavbarSection').classList.add('hidden');
+        document.getElementById('fourthNavbarSection').classList.remove('hidden');
+    }
+    const cleanGrid=()=>{
+        var obstacles=document.getElementsByClassName('obstacle');
+        while(obstacles.length>0){
+            obstacles[0].classList.remove('obstacle');
+        }
+        var entrance=document.getElementsByClassName('entrance');
+        while(entrance.length>0){
+            entrance[0].classList.remove('entrance');
+        }
+        var exit=document.getElementsByClassName('exit');
+        while(exit.length>0){
+            exit[0].classList.remove('exit');
+        }
+        var hE=document.getElementsByClassName('hoverEntrance');
+        while(hE.length>0){
+            hE[0].classList.remove('hoverEntrance');
+        }
+        var hEx=document.getElementsByClassName('hoverExit');
+        while(hEx.length>0){
+            hEx[0].classList.remove('hoverExit');
+        }
+        var hObs=document.getElementsByClassName('hoverObstacle');
+        while(hObs.length>0){
+            hObs[0].classList.remove('hoverObstacle');
+        }
+        cleanPath();
     }
 
     return <div id='navbarMain'>
@@ -131,14 +206,17 @@ const Navbar=()=>{
                 CHOOSE AN ALGO
                 <select name="algoMenu" id="algoMenu">
                     <option value="empty"></option>
-                    <option value="solveDFS">Drunk Python</option>
+                    <option value="solveDFS">Silly Python</option>
                     <option value="solveBFS">OMG THEYRE COMING!</option>
-                    <option value="solveAStar">Big Brainy A.I.</option>
+                    <option value="solveAStar">Big Brain A.I.</option>
                 </select>
             </div>
             <Button variant='danger' id='sendItBtn' onClick={sendIt}>SEND IT</Button>
         </div>
-        
+        <div id='fifthNavbarSection' className='navbarSection hidden'>
+            <Button variant='success' className='resetNavbarBtn' onClick={cleanPath}>CLEAN PATH</Button>
+            <Button variant='dark' className='resetNavbarBtn' onClick={cleanGrid}>CLEAN GRID</Button>
+        </div>
     </div>
 }
 
