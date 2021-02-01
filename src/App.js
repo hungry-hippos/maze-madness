@@ -58,34 +58,56 @@ const MazeSection=(props)=>{
   
 }
 
-// function App(){
-//   const [windowSize,setWindowSize]=useState([]);
+const ScreenResolution=(props)=>{
+  const {setScreenResolution}=props.setter;
 
-//   useEffect(()=>{
-//     var intCode=setInterval((e)=>{
-//       const w=window.innerWidth, h=window.innerHeight;
-//       if (w<350 && h<1500){
-//         console.log("PLEASE zOOM OUT");
-//       }else{
-//         console.log(e);
-//       }
-//     },500)
-//   })
+  useEffect(()=>{
+    var intCode=setInterval((e)=>{
+      const w=window.innerWidth, h=window.innerHeight;
+      console.log(w+"   "+h);
+      if (h<700 || w<1610){
+        document.getElementById('windowHeight').textContent=h;
+        document.getElementById('windowWidth').textContent=w;
+      }else{
+        clearInterval(intCode);
+        setScreenResolution(false);
+      }
+    },500)
 
-//   return <React.Fragment>HI</React.Fragment>
-// }
+  })
+
+  return <div id='screenResolutionScreen'>
+    <div id='screenResolution'>
+      Your screen resolution is <span id='windowHeight'></span> x <span id='windowWidth'></span>.<br/>
+      For the best user experience, please zoom out.
+    </div>
+  </div>
+}
 
 function App() {
 
   const [mazeName,setMazeName]=useState('');
   const [difficulty,setDifficulty]=useState('hard');
-  
-  return <React.Fragment>
-    <SideMenu options={{difficulty,setDifficulty,setMazeName}}/>
-    <MazeSection options={{mazeName,difficulty}}/>
-    <Navbar/>
-  </React.Fragment>
-  
+  const [screenResolution,setScreenResolution]=useState(false);
+
+  useEffect(()=>{
+    const w=window.innerWidth, h=window.innerHeight;
+    if (h<700 || w<1610){
+      setScreenResolution(true);
+    }else{
+      setScreenResolution(false);
+    }
+  })
+
+  if (screenResolution){
+    return <ScreenResolution setter={{setScreenResolution}} />
+  }else{
+    return <React.Fragment>
+      <SideMenu options={{difficulty,setDifficulty,setMazeName}}/>
+      <MazeSection options={{mazeName,difficulty}}/>
+      <Navbar/>
+    </React.Fragment>
+  }  
 }
 
 export default App;

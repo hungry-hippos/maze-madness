@@ -141,6 +141,9 @@ const Navbar=()=>{
         while(PQ.length>0){
             PQ[0].classList.remove('PQ');
         }
+        
+        document.getElementsByClassName('hoverExit')[0].classList.add('exit');
+
 
         document.getElementById('fifthNavbarSection').classList.add('hidden');
         document.getElementById('fourthNavbarSection').classList.remove('hidden');

@@ -1,4 +1,7 @@
-body{background-color: #c2ff65;}
+body{background: #b2e299;
+    background: -webkit-linear-gradient(top left, #b2e299, #71E16E);
+    background: -moz-linear-gradient(top left, #b2e299, #71E16E);
+    background: linear-gradient(to bottom right, #b2e299, #71E16E);}
 
 #easyMaze{height:400px;
 width:400px;
@@ -71,4 +74,27 @@ background-color: white;
 
 .chicken{background-image: url(../images/dumbChickenClear.png);
 background-size: 100% 100%;
+}
+
+#screenResolutionScreen{position:absolute;
+top:0;
+left:0;
+right:0;
+bottom:0;
+background-color: #565454;
+}
+#screenResolution{display:block;
+margin: 100px auto;
+height:400px;
+width:650px;
+line-height:2;
+font-size:30px;
+text-align: center;
+padding-top:100px;
+background: #b2e299;
+background: -webkit-linear-gradient(top left, #b2e299, #71E16E);
+background: -moz-linear-gradient(top left, #b2e299, #71E16E);
+background: linear-gradient(to bottom right, #b2e299, #71E16E);
+box-shadow:0 0 5px black;
+font-family: 'Roboto';
 }
