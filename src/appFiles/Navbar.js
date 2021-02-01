@@ -23,7 +23,7 @@ const Navbar=()=>{
             document.getElementById('buildWalls').classList.add('hidden');
             document.getElementById('thirdNavbarSection').classList.add('hidden');
             document.getElementById('fourthNavbarSection').classList.add('hidden');
-
+            document.getElementById('fifthNavbarSection').classList.add('hidden');
         })
         document.getElementById('makeYourOwnCheckbox').addEventListener('click',()=>{
             document.getElementById('mazeMenu').selectedIndex=0;
@@ -32,6 +32,7 @@ const Navbar=()=>{
             document.getElementById('buildWalls').classList.remove('hidden');
             document.getElementById('thirdNavbarSection').classList.remove('hidden');
             document.getElementById('fourthNavbarSection').classList.remove('hidden');
+            document.getElementById('fifthNavbarSection').classList.add('hidden');
 
 
             document.getElementById('sidebarCleanSlate').click();

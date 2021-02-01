@@ -269,6 +269,8 @@ const mazeSolver={
                 break;
         }
 
+        const exitKey=mazeSolver.path[mazeSolver.path.length-1];
+        mazeSolver.allSq[exitKey].classList.remove('exit');
 
         mazeSolver.intervalCode=setInterval(()=>{
 

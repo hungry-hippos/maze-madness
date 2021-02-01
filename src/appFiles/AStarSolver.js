@@ -144,9 +144,8 @@ const AStarSolver={
         AStarSolver.path.unshift(exitKey);
     },
     backTrackPath(){
-
-        var timeInterval=0;
         
+        AStarSolver.allSq[AStarSolver.exitKey].classList.remove('exit');
         AStarSolver.intervalCode=setInterval(()=>{
 
             if(AStarSolver.path.length===0){
