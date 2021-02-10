@@ -1,7 +1,7 @@
 body{background: #b2e299;
-    background: -webkit-linear-gradient(top left, #b2e299, #71E16E);
-    background: -moz-linear-gradient(top left, #b2e299, #71E16E);
-    background: linear-gradient(to bottom right, #b2e299, #71E16E);}
+    background: -webkit-linear-gradient(top left, #d3f9bf, #4bde47);
+    background: -moz-linear-gradient(top left, #d3f9bf, #4bde47);
+    background: linear-gradient(to bottom right, #d3f9bf, #4bde47);}
 
 #easyMaze{height:400px;
 width:400px;
@@ -17,12 +17,12 @@ background-color:black;
 display: block;
 margin:50px auto;
 }
-#hardMaze{height:600px;
-width:1400px;
+#hardMaze{height:480px;
+width:1120px;
 box-sizing: border-box;
 background-color:black;
 display: block;
-margin:130px auto;
+margin:120px auto;
 }
 .easySquare{height:50px;
 width:50px;
@@ -38,8 +38,8 @@ display:block;
 float:left;
 box-sizing: border-box;
 }
-.hardSquare{height:25px;
-    width:25px;
+.hardSquare{height:20px;
+    width:20px;
     margin:0;
     display:block;
     float:left;

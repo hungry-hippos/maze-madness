@@ -306,10 +306,6 @@ const mazeSolver={
                 break;
         }
 
-        if (horizontalNbrKey==-1 || verticalNbrKey==-1){
-            console.log("NEGS");
-        }
-
         const hzntlWall=mazeSolver.allSq[horizontalNbrKey].classList.contains('obstacle');
         const verticalWall=mazeSolver.allSq[verticalNbrKey].classList.contains('obstacle');
         return (hzntlWall && verticalWall);

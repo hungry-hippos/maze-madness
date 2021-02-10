@@ -1,5 +1,6 @@
 import React,{useEffect} from 'react'
 import Button from 'react-bootstrap/Button'
+import logo from '../images/mazeMakerLogo.PNG'
 import './Navbar.css'
 
 
@@ -142,8 +143,10 @@ const Navbar=()=>{
             PQ[0].classList.remove('PQ');
         }
         
-        document.getElementsByClassName('hoverExit')[0].classList.add('exit');
-
+        var hovEx=document.getElementsByClassName('hoverExit');
+        if (hovEx.length>0){
+            hovEx[0].classList.add('exit');
+        }
 
         document.getElementById('fifthNavbarSection').classList.add('hidden');
         document.getElementById('fourthNavbarSection').classList.remove('hidden');
@@ -177,6 +180,7 @@ const Navbar=()=>{
     }
 
     return <div id='navbarMain'>
+        <img src={logo} alt='' id='navbarLogo'/>
         <div id='firstNavbarSection' className='navbarSection'>
             <div id='pickMaze'>
                 <div className='dullSection hidden' id='leftDullScreen'></div>
@@ -197,15 +201,15 @@ const Navbar=()=>{
             </div>
         </div>
         <div id='secondNavbarSectionGenerate' className='navbarSection hidden'>
-            <Button id='generateBtn' style={{fontSize:'25px',margin:'10px 0'}} className='gridReadyBtn' onClick={generateMaze}>GENERATE</Button>
+            <Button id='generateBtn' style={{fontSize:'20px',margin:'10px 0'}} className='gridReadyBtn' onClick={generateMaze} variant='dark'>GENERATE</Button>
         </div>
         <div id='thirdNavbarSection' className='navbarSection hidden'>
-            <div id='buildWalls' className='setSquare hidden'><Button variant='outline-dark' className='setBtn' id='buildWallsBtn' onClick={buildWalls}>BUILD WALLS clickN'drag</Button></div>
-            <div id='pickEntrance' className='setSquare'><Button variant='outline-success' className='setBtn' id='setEntranceBtn' onClick={setEntrance}>PICK A STARTING POINT</Button></div>
-            <div id='pickExit' className='setSquare'><Button variant='outline-danger' className='setBtn' id='setExitBtn' onClick={setExit}>PICK A FINISHING POINT</Button></div>
+            <div id='buildWalls' className='setSquare hidden'><Button variant='outline-dark' className='setBtn' id='buildWallsBtn' onClick={buildWalls}>BUILD WALLS<br/> clickN'drag</Button></div>
+            <div id='pickEntrance' className='setSquare'><Button variant='outline-success' className='setBtn' id='setEntranceBtn' onClick={setEntrance}>PICK A<br/> STARTING<br/> POINT</Button></div>
+            <div id='pickExit' className='setSquare'><Button variant='outline-danger' className='setBtn' id='setExitBtn' onClick={setExit}>PICK A<br/> FINISHING<br/> POINT</Button></div>
         </div>
         <div id='fourthNavbarSection' className='navbarSection hidden'>
-            <div>
+            <div id='chooseAlgoDiv'>
                 CHOOSE AN ALGO
                 <select name="algoMenu" id="algoMenu">
                     <option value="empty"></option>
@@ -214,11 +218,11 @@ const Navbar=()=>{
                     <option value="solveAStar">Big Brain A.I.</option>
                 </select>
             </div>
-            <Button variant='danger' id='sendItBtn' onClick={sendIt}>SEND IT</Button>
+            <Button variant='outline-dark' id='sendItBtn' onClick={sendIt}>SOLVE</Button>
         </div>
         <div id='fifthNavbarSection' className='navbarSection hidden'>
-            <Button variant='success' className='resetNavbarBtn' onClick={cleanPath}>CLEAN PATH</Button>
-            <Button variant='dark' className='resetNavbarBtn' onClick={cleanGrid}>CLEAN GRID</Button>
+            <Button variant='outline-dark' className='resetNavbarBtn' onClick={cleanPath}>CLEAN PATH</Button>
+            <Button variant='outline-dark' className='resetNavbarBtn' onClick={cleanGrid}>CLEAN GRID</Button>
         </div>
     </div>
 }

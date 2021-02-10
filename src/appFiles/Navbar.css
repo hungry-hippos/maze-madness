@@ -5,18 +5,19 @@ position: absolute;
 top:0;
 left:0;
 right:0;
-background-color: rgb(207, 204, 204);
+background-color: #e1a875;
 display: flex;
-font-size:25px;
+font-size:15px;
 box-shadow: 0 0 3px black;
 }
+#navbarLogo{margin:0 40px 0 20px;}
 
 .navbarSection{padding:10px;
 margin:0;
 height:100%;
 box-sizing: border-box;
 }
-.dullSection{background-color: #151414c7;
+.dullSection{background-color: #151414e6;
 position:absolute;
 top:0;
 left:0;
@@ -29,65 +30,80 @@ bottom:0;
 
 #firstNavbarSection{display: flex;}
 #pickMaze{border-right:thin solid black;
-padding:0 20px;
+padding:10px 15px 0 15px;
 text-align: center;
 position:relative;
 background-color: white;
 border-radius: 30px 0 0 30px;
+box-shadow: 0 0 5px black;
 }
 #mazeMenu{display: block;
 margin: 5px auto 0 auto;
-font-size:20px;
+font-size:15px;
 }
-#makeYourOwn{padding:0 20px;
+#makeYourOwn{
+padding:10px 15px 0 15px;
 text-align: center;
 position:relative;
 background-color: white;
 border-radius: 0 30px 30px 0;
-
+box-shadow: 0 0 5px black;
 }
 #makeYourOwnCheckbox{display: block;
 margin: 5px auto 0;
-height: 30px;
-width: 30px;
+height: 25px;
+width: 25px;
 }
 
-#secondNavbarSectionGenerate{padding:20px 20px;
+#secondNavbarSectionGenerate{padding:20px 10px;
 }
 
-.setSquare{width:150px;
+.setSquare{
     display: inline-block;
     text-align: center;
-    margin:0 5px;
+    margin:0 4px;
+    font-size: 18px;
+    padding:0;
+    font-weight:bold;
     }
-#buildWallsBtn{font-size: 18px;
-padding: 14px;}
-#setEntranceBtn{font-size:18px;
+#buildWallsBtn{
+padding:15px 7px;
+width:140px !important;
+height:80px !important;
+box-sizing: border-box !important;
+}
+#setEntranceBtn{
 line-height:1.2;
-padding:10px;
+width:100px !important;
+height:80px !important;
+box-sizing: border-box !important;
 }
-#setExitBtn{font-size:18px;
+#setExitBtn{
 line-height:1.2;
-padding:10px;
+width:100px !important;
+height:80px !important;
+box-sizing: border-box !important;
 }
-#thirdNavbarSection{margin-left:50px;
-transition:1s;
-opacity:1;
-}
+
 #fourthNavbarSection{display:flex;
-margin-left:90px;
+margin-left:50px;
 transition:1s;
 opacity:1;
+font-size:20px;
+letter-spacing: 1px;
 }
+#chooseAlgoDiv{margin:10px 0 0 0;}
 #algoMenu{display:block;
-font-size:19px;
-margin:10px auto;
+font-size:15px;
+margin:5px auto;
 }
 #sendItBtn{font-size:20px;
 height:80%;
 display: inline-block;
 margin:10px 20px;
 font-weight: bold;
+border:2px solid black;
+letter-spacing: 1px;
 }
 
 .hidden{display:none !important}
@@ -97,9 +113,8 @@ font-weight: bold;
 .redBtn{background-color:#dc3545 !important; color:white}
 
 .missingAlgoShade{box-shadow: 0 0 10px 5px red;}
-.resetNavbarBtn{height:100%;
-font-size:20px;
-margin:0 10px;
-padding:10px 20px;
+.resetNavbarBtn{font-size:18px;
+margin:10px 10px;
+padding:20px 10px;
 }
-#fifthNavbarSection{margin-left:90px}
+#fifthNavbarSection{margin-left:20px}
