@@ -99,6 +99,7 @@ const Navbar=()=>{
         document.getElementById('sidebarSetEntrance').click();
     }
     const sendIt=()=>{
+        document.getElementById('navbarBlockScreen').classList.remove('hidden');
         const algo=document.getElementById('algoMenu').value;
         const exit=document.getElementsByClassName('exit');
         const entrance=document.getElementsByClassName('entrance');
@@ -180,6 +181,7 @@ const Navbar=()=>{
     }
 
     return <div id='navbarMain'>
+        <div id='navbarBlockScreen' className='hidden'></div>
         <img src={logo} alt='' id='navbarLogo'/>
         <div id='firstNavbarSection' className='navbarSection'>
             <div id='pickMaze'>

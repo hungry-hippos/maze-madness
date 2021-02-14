@@ -10,6 +10,11 @@ display: flex;
 font-size:15px;
 box-shadow: 0 0 3px black;
 }
+#navbarBlockScreen{position:absolute;
+top:0;
+bottom:0;
+left:0;
+right:0}
 #navbarLogo{margin:0 40px 0 20px;}
 
 .navbarSection{padding:10px;

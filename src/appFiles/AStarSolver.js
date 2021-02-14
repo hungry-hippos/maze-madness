@@ -149,6 +149,7 @@ const AStarSolver={
         AStarSolver.intervalCode=setInterval(()=>{
 
             if(AStarSolver.path.length===0){
+                document.getElementById('navbarBlockScreen').classList.add('hidden');
                 clearInterval(AStarSolver.intervalCode);
                 return;
             }
@@ -180,6 +181,7 @@ const AStarSolver={
         AStarSolver.intervalCode=setInterval(()=>{
 
             if (AStarSolver.nextPQ.size()==0){
+                document.getElementById('navbarBlockScreen').classList.add('hidden');
                 clearInterval(AStarSolver.intervalCode);
                 return;
             }
@@ -192,6 +194,7 @@ const AStarSolver={
             //early release to avoid processing nodes that are already in set
             while(AStarSolver.allSq[currKey].classList.contains('set')){
                 if (AStarSolver.nextPQ.size()==0){
+                    document.getElementById('navbarBlockScreen').classList.add('hidden');
                     clearInterval(AStarSolver.intervalCode);
                     return;
                 }
@@ -235,9 +238,6 @@ const AStarSolver={
 
             }
         },10)
-
-
-
     }
 }
 

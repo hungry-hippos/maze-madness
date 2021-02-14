@@ -276,6 +276,7 @@ const mazeSolver={
 
             if(mazeSolver.path.length===0){
                 clearInterval(mazeSolver.intervalCode);
+                document.getElementById('navbarBlockScreen').classList.add('hidden');
                 return;
             }
             
@@ -348,6 +349,7 @@ const mazeSolver={
 
             //no path to exit exists
             if (mazeSolver.path.length===0){
+                document.getElementById('navbarBlockScreen').classList.add('hidden');
                 clearInterval(mazeSolver.intervalCode);
                 return;
             }
@@ -420,6 +422,7 @@ const mazeSolver={
 
             //no path to exit exists
             if (mazeSolver.nextBFSRound.length===0){
+                document.getElementById('navbarBlockScreen').classList.add('hidden');
                 clearInterval(mazeSolver.intervalCode);
                 return;
             }
