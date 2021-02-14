@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/maze-maker/static/css/main.b973943c.chunk.css",
-    "main.js": "/maze-maker/static/js/main.7cb8febd.chunk.js",
-    "main.js.map": "/maze-maker/static/js/main.7cb8febd.chunk.js.map",
+    "main.css": "/maze-maker/static/css/main.20dc1420.chunk.css",
+    "main.js": "/maze-maker/static/js/main.d50eef3f.chunk.js",
+    "main.js.map": "/maze-maker/static/js/main.d50eef3f.chunk.js.map",
     "runtime-main.js": "/maze-maker/static/js/runtime-main.0e32ee2b.js",
     "runtime-main.js.map": "/maze-maker/static/js/runtime-main.0e32ee2b.js.map",
     "static/css/2.150d169a.chunk.css": "/maze-maker/static/css/2.150d169a.chunk.css",
@@ -12,7 +12,7 @@
     "static/js/3.12c73889.chunk.js.map": "/maze-maker/static/js/3.12c73889.chunk.js.map",
     "index.html": "/maze-maker/index.html",
     "static/css/2.150d169a.chunk.css.map": "/maze-maker/static/css/2.150d169a.chunk.css.map",
-    "static/css/main.b973943c.chunk.css.map": "/maze-maker/static/css/main.b973943c.chunk.css.map",
+    "static/css/main.20dc1420.chunk.css.map": "/maze-maker/static/css/main.20dc1420.chunk.css.map",
     "static/js/2.7396214c.chunk.js.LICENSE.txt": "/maze-maker/static/js/2.7396214c.chunk.js.LICENSE.txt",
     "static/media/Maze.css": "/maze-maker/static/media/dumbChickenClear.2b462cea.png",
     "static/media/mazeMakerLogo.c9a1668a.PNG": "/maze-maker/static/media/mazeMakerLogo.c9a1668a.PNG"
@@ -21,7 +21,7 @@
     "static/js/runtime-main.0e32ee2b.js",
     "static/css/2.150d169a.chunk.css",
     "static/js/2.7396214c.chunk.js",
-    "static/css/main.b973943c.chunk.css",
-    "static/js/main.7cb8febd.chunk.js"
+    "static/css/main.20dc1420.chunk.css",
+    "static/js/main.d50eef3f.chunk.js"
   ]
 }
