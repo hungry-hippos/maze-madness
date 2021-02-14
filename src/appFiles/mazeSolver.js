@@ -179,6 +179,7 @@ const mazeSolver={
                 break;
             }
 
+        document.getElementById('hardMaze').addEventListener('mouseleave',mazeSolver.release);
         mazeSolver.allSq=document.getElementsByClassName(sqId);
         for (var i=0;i<mazeSolver.allSq.length;i++){
 
