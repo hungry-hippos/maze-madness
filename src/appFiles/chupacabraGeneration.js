@@ -113,6 +113,8 @@ const chupacabraGeneration={
 
         chupacabraGeneration.intervalCode=setInterval(()=>{
             if (chupacabraGeneration.stack.length===0){
+                document.getElementById('thirdNavbarSection').classList.remove('hidden');
+                document.getElementById('fourthNavbarSection').classList.remove('hidden');
                 clearInterval(chupacabraGeneration.intervalCode);
                 return;
             }

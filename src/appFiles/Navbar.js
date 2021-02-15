@@ -38,11 +38,6 @@ const Navbar=()=>{
 
             document.getElementById('sidebarCleanSlate').click();
         })
-        document.getElementById('generateBtn').addEventListener('click',()=>{
-            document.getElementById('thirdNavbarSection').classList.remove('hidden');
-            document.getElementById('fourthNavbarSection').classList.remove('hidden');
-
-        })
 
         //clicking on a buildWall/setEntrance/setExit btn fully colors it and unselects other btns
         const setBtn=document.getElementsByClassName('setBtn');
@@ -88,6 +83,7 @@ const Navbar=()=>{
             default:
                 break;
         }
+
     }
     const buildWalls=()=>{
         document.getElementById('sidebarSetObstacle').click();
@@ -99,7 +95,6 @@ const Navbar=()=>{
         document.getElementById('sidebarSetEntrance').click();
     }
     const sendIt=()=>{
-        document.getElementById('navbarBlockScreen').classList.remove('hidden');
         const algo=document.getElementById('algoMenu').value;
         const exit=document.getElementsByClassName('exit');
         const entrance=document.getElementsByClassName('entrance');
@@ -121,6 +116,7 @@ const Navbar=()=>{
             document.getElementById(algo).click();
             document.getElementById('fourthNavbarSection').classList.add('hidden');
             document.getElementById('fifthNavbarSection').classList.remove('hidden');
+            document.getElementById('navbarBlockScreen').classList.remove('hidden');
         }
     }
     const cleanPath=()=>{
@@ -189,10 +185,10 @@ const Navbar=()=>{
                 PICK A MAZE
                 <select name="mazeMenu" id="mazeMenu">
                     <option value="empty"></option>
-                    <option value="snakey">Anaconda</option>
-                    <option value="tsunami">Tsunami</option>
-                    <option value="kruskals">Ant Farm</option>
-                    <option value="curtains">Curtains</option>
+                    <option value="snakey">DFS</option>
+                    <option value="tsunami">Prims</option>
+                    <option value="kruskals">Kruskals</option>
+                    <option value="curtains">Ellers</option>
                     <option value="chupacabra">Chupacabra</option>
                 </select>
             </div>
@@ -215,9 +211,9 @@ const Navbar=()=>{
                 CHOOSE AN ALGO
                 <select name="algoMenu" id="algoMenu">
                     <option value="empty"></option>
-                    <option value="solveDFS">Silly Python</option>
-                    <option value="solveBFS">OMG THEYRE COMING!</option>
-                    <option value="solveAStar">Big Brain A.I.</option>
+                    <option value="solveDFS">Depth First Search</option>
+                    <option value="solveBFS">Breadth First Search</option>
+                    <option value="solveAStar">A*</option>
                 </select>
             </div>
             <Button variant='outline-dark' id='sendItBtn' onClick={sendIt}>SOLVE</Button>

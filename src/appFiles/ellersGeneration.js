@@ -148,6 +148,8 @@ const ellersGeneration={
             }
 
             if (ellersGeneration.currKey===ellersGeneration.allSq.length){
+                document.getElementById('thirdNavbarSection').classList.remove('hidden');
+                document.getElementById('fourthNavbarSection').classList.remove('hidden');
                 clearInterval(ellersGeneration.intervalCode);
                 return;
             }

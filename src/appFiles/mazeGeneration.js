@@ -185,6 +185,8 @@ const mazeGeneration={
 
         mazeGeneration.intervalCode=setInterval(()=>{
             if (mazeGeneration.visitedCounter===mazeGeneration.isVisited.length){
+                document.getElementById('thirdNavbarSection').classList.remove('hidden');
+                document.getElementById('fourthNavbarSection').classList.remove('hidden');
                 clearInterval(mazeGeneration.intervalCode);
                 document.getElementsByClassName('current')[0].classList.add('visited');
                 document.getElementsByClassName('current')[0].classList.remove('current');

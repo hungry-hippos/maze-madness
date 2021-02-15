@@ -146,6 +146,8 @@ const primsGeneration={
 
             document.getElementsByClassName('current')[0].classList.remove('current');
             if (primsGeneration.frontierSet.length===0){
+                document.getElementById('thirdNavbarSection').classList.remove('hidden');
+                document.getElementById('fourthNavbarSection').classList.remove('hidden');
                 clearInterval(primsGeneration.intervalCode);
                 return;
             }

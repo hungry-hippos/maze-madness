@@ -189,6 +189,8 @@ const kruskalsGeneration={
         kruskalsGeneration.intervalCode=setInterval(()=>{
             for (var i=0;i<7;i++){
                 if (kruskalsGeneration.edgeArray.length===0){
+                    document.getElementById('thirdNavbarSection').classList.remove('hidden');
+                    document.getElementById('fourthNavbarSection').classList.remove('hidden');
                     clearInterval(kruskalsGeneration.intervalCode);
                     return;
                 }
