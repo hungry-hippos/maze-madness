@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/maze-maker/static/css/main.20dc1420.chunk.css",
-    "main.js": "/maze-maker/static/js/main.d50eef3f.chunk.js",
-    "main.js.map": "/maze-maker/static/js/main.d50eef3f.chunk.js.map",
+    "main.js": "/maze-maker/static/js/main.fa367a7f.chunk.js",
+    "main.js.map": "/maze-maker/static/js/main.fa367a7f.chunk.js.map",
     "runtime-main.js": "/maze-maker/static/js/runtime-main.0e32ee2b.js",
     "runtime-main.js.map": "/maze-maker/static/js/runtime-main.0e32ee2b.js.map",
     "static/css/2.150d169a.chunk.css": "/maze-maker/static/css/2.150d169a.chunk.css",
@@ -22,6 +22,6 @@
     "static/css/2.150d169a.chunk.css",
     "static/js/2.7396214c.chunk.js",
     "static/css/main.20dc1420.chunk.css",
-    "static/js/main.d50eef3f.chunk.js"
+    "static/js/main.fa367a7f.chunk.js"
   ]
 }
